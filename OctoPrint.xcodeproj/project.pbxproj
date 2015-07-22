@@ -1,0 +1,506 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		4CADF17D1B5FCF0E0090AFEC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CADF17C1B5FCF0E0090AFEC /* AppDelegate.swift */; };
+		4CADF17F1B5FCF0E0090AFEC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CADF17E1B5FCF0E0090AFEC /* ViewController.swift */; };
+		4CADF1821B5FCF0E0090AFEC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4CADF1801B5FCF0E0090AFEC /* Main.storyboard */; };
+		4CADF1841B5FCF0E0090AFEC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4CADF1831B5FCF0E0090AFEC /* Assets.xcassets */; };
+		4CADF1871B5FCF0E0090AFEC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4CADF1851B5FCF0E0090AFEC /* LaunchScreen.storyboard */; };
+		4CADF1921B5FCF0E0090AFEC /* OctoPrintTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CADF1911B5FCF0E0090AFEC /* OctoPrintTests.swift */; };
+		4CADF19D1B5FCF0E0090AFEC /* OctoPrintUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CADF19C1B5FCF0E0090AFEC /* OctoPrintUITests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		4CADF18E1B5FCF0E0090AFEC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4CADF1711B5FCF0E0090AFEC /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 4CADF1781B5FCF0E0090AFEC;
+			remoteInfo = OctoPrint;
+		};
+		4CADF1991B5FCF0E0090AFEC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4CADF1711B5FCF0E0090AFEC /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 4CADF1781B5FCF0E0090AFEC;
+			remoteInfo = OctoPrint;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		4CADF1791B5FCF0E0090AFEC /* OctoPrint.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OctoPrint.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		4CADF17C1B5FCF0E0090AFEC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		4CADF17E1B5FCF0E0090AFEC /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		4CADF1811B5FCF0E0090AFEC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		4CADF1831B5FCF0E0090AFEC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		4CADF1861B5FCF0E0090AFEC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		4CADF1881B5FCF0E0090AFEC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4CADF18D1B5FCF0E0090AFEC /* OctoPrintTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OctoPrintTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		4CADF1911B5FCF0E0090AFEC /* OctoPrintTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OctoPrintTests.swift; sourceTree = "<group>"; };
+		4CADF1931B5FCF0E0090AFEC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4CADF1981B5FCF0E0090AFEC /* OctoPrintUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OctoPrintUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		4CADF19C1B5FCF0E0090AFEC /* OctoPrintUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OctoPrintUITests.swift; sourceTree = "<group>"; };
+		4CADF19E1B5FCF0E0090AFEC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		4CADF1761B5FCF0E0090AFEC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4CADF18A1B5FCF0E0090AFEC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4CADF1951B5FCF0E0090AFEC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		4CADF1701B5FCF0E0090AFEC = {
+			isa = PBXGroup;
+			children = (
+				4CADF17B1B5FCF0E0090AFEC /* OctoPrint */,
+				4CADF1901B5FCF0E0090AFEC /* OctoPrintTests */,
+				4CADF19B1B5FCF0E0090AFEC /* OctoPrintUITests */,
+				4CADF17A1B5FCF0E0090AFEC /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		4CADF17A1B5FCF0E0090AFEC /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				4CADF1791B5FCF0E0090AFEC /* OctoPrint.app */,
+				4CADF18D1B5FCF0E0090AFEC /* OctoPrintTests.xctest */,
+				4CADF1981B5FCF0E0090AFEC /* OctoPrintUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		4CADF17B1B5FCF0E0090AFEC /* OctoPrint */ = {
+			isa = PBXGroup;
+			children = (
+				4CADF17C1B5FCF0E0090AFEC /* AppDelegate.swift */,
+				4CADF17E1B5FCF0E0090AFEC /* ViewController.swift */,
+				4CADF1801B5FCF0E0090AFEC /* Main.storyboard */,
+				4CADF1831B5FCF0E0090AFEC /* Assets.xcassets */,
+				4CADF1851B5FCF0E0090AFEC /* LaunchScreen.storyboard */,
+				4CADF1881B5FCF0E0090AFEC /* Info.plist */,
+			);
+			path = OctoPrint;
+			sourceTree = "<group>";
+		};
+		4CADF1901B5FCF0E0090AFEC /* OctoPrintTests */ = {
+			isa = PBXGroup;
+			children = (
+				4CADF1911B5FCF0E0090AFEC /* OctoPrintTests.swift */,
+				4CADF1931B5FCF0E0090AFEC /* Info.plist */,
+			);
+			path = OctoPrintTests;
+			sourceTree = "<group>";
+		};
+		4CADF19B1B5FCF0E0090AFEC /* OctoPrintUITests */ = {
+			isa = PBXGroup;
+			children = (
+				4CADF19C1B5FCF0E0090AFEC /* OctoPrintUITests.swift */,
+				4CADF19E1B5FCF0E0090AFEC /* Info.plist */,
+			);
+			path = OctoPrintUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		4CADF1781B5FCF0E0090AFEC /* OctoPrint */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4CADF1A11B5FCF0E0090AFEC /* Build configuration list for PBXNativeTarget "OctoPrint" */;
+			buildPhases = (
+				4CADF1751B5FCF0E0090AFEC /* Sources */,
+				4CADF1761B5FCF0E0090AFEC /* Frameworks */,
+				4CADF1771B5FCF0E0090AFEC /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = OctoPrint;
+			productName = OctoPrint;
+			productReference = 4CADF1791B5FCF0E0090AFEC /* OctoPrint.app */;
+			productType = "com.apple.product-type.application";
+		};
+		4CADF18C1B5FCF0E0090AFEC /* OctoPrintTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4CADF1A41B5FCF0E0090AFEC /* Build configuration list for PBXNativeTarget "OctoPrintTests" */;
+			buildPhases = (
+				4CADF1891B5FCF0E0090AFEC /* Sources */,
+				4CADF18A1B5FCF0E0090AFEC /* Frameworks */,
+				4CADF18B1B5FCF0E0090AFEC /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				4CADF18F1B5FCF0E0090AFEC /* PBXTargetDependency */,
+			);
+			name = OctoPrintTests;
+			productName = OctoPrintTests;
+			productReference = 4CADF18D1B5FCF0E0090AFEC /* OctoPrintTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		4CADF1971B5FCF0E0090AFEC /* OctoPrintUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4CADF1A71B5FCF0E0090AFEC /* Build configuration list for PBXNativeTarget "OctoPrintUITests" */;
+			buildPhases = (
+				4CADF1941B5FCF0E0090AFEC /* Sources */,
+				4CADF1951B5FCF0E0090AFEC /* Frameworks */,
+				4CADF1961B5FCF0E0090AFEC /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				4CADF19A1B5FCF0E0090AFEC /* PBXTargetDependency */,
+			);
+			name = OctoPrintUITests;
+			productName = OctoPrintUITests;
+			productReference = 4CADF1981B5FCF0E0090AFEC /* OctoPrintUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		4CADF1711B5FCF0E0090AFEC /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0700;
+				ORGANIZATIONNAME = "Michael Teeuw";
+				TargetAttributes = {
+					4CADF1781B5FCF0E0090AFEC = {
+						CreatedOnToolsVersion = 7.0;
+					};
+					4CADF18C1B5FCF0E0090AFEC = {
+						CreatedOnToolsVersion = 7.0;
+						TestTargetID = 4CADF1781B5FCF0E0090AFEC;
+					};
+					4CADF1971B5FCF0E0090AFEC = {
+						CreatedOnToolsVersion = 7.0;
+						TestTargetID = 4CADF1781B5FCF0E0090AFEC;
+					};
+				};
+			};
+			buildConfigurationList = 4CADF1741B5FCF0E0090AFEC /* Build configuration list for PBXProject "OctoPrint" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 4CADF1701B5FCF0E0090AFEC;
+			productRefGroup = 4CADF17A1B5FCF0E0090AFEC /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				4CADF1781B5FCF0E0090AFEC /* OctoPrint */,
+				4CADF18C1B5FCF0E0090AFEC /* OctoPrintTests */,
+				4CADF1971B5FCF0E0090AFEC /* OctoPrintUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		4CADF1771B5FCF0E0090AFEC /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4CADF1871B5FCF0E0090AFEC /* LaunchScreen.storyboard in Resources */,
+				4CADF1841B5FCF0E0090AFEC /* Assets.xcassets in Resources */,
+				4CADF1821B5FCF0E0090AFEC /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4CADF18B1B5FCF0E0090AFEC /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4CADF1961B5FCF0E0090AFEC /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		4CADF1751B5FCF0E0090AFEC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4CADF17F1B5FCF0E0090AFEC /* ViewController.swift in Sources */,
+				4CADF17D1B5FCF0E0090AFEC /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4CADF1891B5FCF0E0090AFEC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4CADF1921B5FCF0E0090AFEC /* OctoPrintTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4CADF1941B5FCF0E0090AFEC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4CADF19D1B5FCF0E0090AFEC /* OctoPrintUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		4CADF18F1B5FCF0E0090AFEC /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 4CADF1781B5FCF0E0090AFEC /* OctoPrint */;
+			targetProxy = 4CADF18E1B5FCF0E0090AFEC /* PBXContainerItemProxy */;
+		};
+		4CADF19A1B5FCF0E0090AFEC /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 4CADF1781B5FCF0E0090AFEC /* OctoPrint */;
+			targetProxy = 4CADF1991B5FCF0E0090AFEC /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		4CADF1801B5FCF0E0090AFEC /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4CADF1811B5FCF0E0090AFEC /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		4CADF1851B5FCF0E0090AFEC /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4CADF1861B5FCF0E0090AFEC /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		4CADF19F1B5FCF0E0090AFEC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		4CADF1A01B5FCF0E0090AFEC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		4CADF1A21B5FCF0E0090AFEC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = OctoPrint/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = nl.xonaymedia.OctoPrint;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		4CADF1A31B5FCF0E0090AFEC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = OctoPrint/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = nl.xonaymedia.OctoPrint;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		4CADF1A51B5FCF0E0090AFEC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = OctoPrintTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = nl.xonaymedia.OctoPrintTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/OctoPrint.app/OctoPrint";
+			};
+			name = Debug;
+		};
+		4CADF1A61B5FCF0E0090AFEC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = OctoPrintTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = nl.xonaymedia.OctoPrintTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/OctoPrint.app/OctoPrint";
+			};
+			name = Release;
+		};
+		4CADF1A81B5FCF0E0090AFEC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = OctoPrintUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = nl.xonaymedia.OctoPrintUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = OctoPrint;
+				USES_XCTRUNNER = YES;
+			};
+			name = Debug;
+		};
+		4CADF1A91B5FCF0E0090AFEC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = OctoPrintUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = nl.xonaymedia.OctoPrintUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = OctoPrint;
+				USES_XCTRUNNER = YES;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		4CADF1741B5FCF0E0090AFEC /* Build configuration list for PBXProject "OctoPrint" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4CADF19F1B5FCF0E0090AFEC /* Debug */,
+				4CADF1A01B5FCF0E0090AFEC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4CADF1A11B5FCF0E0090AFEC /* Build configuration list for PBXNativeTarget "OctoPrint" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4CADF1A21B5FCF0E0090AFEC /* Debug */,
+				4CADF1A31B5FCF0E0090AFEC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		4CADF1A41B5FCF0E0090AFEC /* Build configuration list for PBXNativeTarget "OctoPrintTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4CADF1A51B5FCF0E0090AFEC /* Debug */,
+				4CADF1A61B5FCF0E0090AFEC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		4CADF1A71B5FCF0E0090AFEC /* Build configuration list for PBXNativeTarget "OctoPrintUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4CADF1A81B5FCF0E0090AFEC /* Debug */,
+				4CADF1A91B5FCF0E0090AFEC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 4CADF1711B5FCF0E0090AFEC /* Project object */;
+}
