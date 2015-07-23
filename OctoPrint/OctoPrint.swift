@@ -17,6 +17,11 @@ struct Temperature {
     var offset:Float
 }
 
+enum ToolType {
+    case Bed
+    case Extruder
+}
+
 struct StateFlags {
     var operational:Bool
     var paused:Bool
@@ -27,11 +32,15 @@ struct StateFlags {
     var closedOrError:Bool
 }
 
+
+let octoPrintDidUpdateNotifiction = "com.xonaymedia.OctoPrintApp.OctoPrintDidUpdate"
+
 class OctoPrint {
+    static let sharedInstance = OctoPrint()
+    
     
     let baseUrl = "http://192.168.0.30/api/"
     
-    var delegate:OctoPrintDelegate?
     var updateTimeStamp:NSDate?
   
     // version
@@ -61,14 +70,18 @@ class OctoPrint {
         return baseUrl + endPoint
     }
   
-    func performAPICall(endPoint:String, successCallback:(JSON)->Void) {
-        self.manager.request(.GET, generateEndPointURLString(endPoint)).responseJSON {
+    func performAPICall(endPoint:String, parameters: [String: AnyObject]? = nil, post: Bool = false, successCallback:(JSON)->Void) {
+
+        self.manager.request((post) ? .POST : .GET, generateEndPointURLString(endPoint), parameters: parameters, encoding: .JSON).responseJSON {
             (request, response, json, error) -> Void in
             if let error = error {
+                
                 self.handleApiError(error)
             } else {
                 if let json = json {
                     successCallback(JSON(json))
+                } else {
+                    successCallback(JSON([]))
                 }
             }
         }
@@ -81,7 +94,7 @@ class OctoPrint {
     
     func handleUpdate() {
         self.updateTimeStamp = NSDate()
-        self.delegate?.octoPrintDidUpdate()
+        NSNotificationCenter.defaultCenter().postNotificationName(octoPrintDidUpdateNotifiction, object: self)
     }
     
     func updateAll() {
@@ -128,13 +141,33 @@ class OctoPrint {
             self.handleUpdate()
             
         })
-        
     }
     
+
     
+    func toolTypeForTemperatureIdentifier(identifier:String) ->ToolType {
+        if identifier == "bed" {
+            return .Bed
+        }
+        return .Extruder
+    }
+    
+    func setTargetTemperature(targetTemperature:Float, forTool toolName:String) {
+        print("Target for \(toolName): \(targetTemperature)")
+        
+        let payload = [
+            "command": "target",
+            "targets": [
+                toolName: targetTemperature
+            ]
+        ]
+        
+        performAPICall("printer/tool", parameters: payload, post: true) {
+            (_) -> Void in
+            print("Done!")
+        }
+        
+    }
    
 }
 
-protocol OctoPrintDelegate {
-    func octoPrintDidUpdate()
-}
