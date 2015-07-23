@@ -42,8 +42,7 @@ class OctoPrint {
     var printerStateText:String = "Unknown"
     
     var printerStateFlags:StateFlags = StateFlags(operational: false, paused: false, printing: false, sdReady: false, error: false, ready: false, closedOrError: false)
-    var bedTemperature:Temperature = Temperature(actual: 0, target: 0, offset: 0)
-    var extruderTemperatures:[String:Temperature] = [:]
+    var temperatures:[String:Temperature] = [:]
     
     
     var manager:Alamofire.Manager = {
@@ -118,20 +117,12 @@ class OctoPrint {
                 error: json["state"]["flags"]["error"].bool ?? false,
                 ready: json["state"]["flags"]["ready"].bool ?? false,
                 closedOrError: json["state"]["flags"]["closedOrError"].bool ?? false)
-                
-            self.bedTemperature = Temperature(
-                actual: json["temperature"]["bed"]["actual"].float ?? 0,
-                target: json["temperature"]["bed"]["target"].float ?? 0,
-                offset: json["temperature"]["bed"]["offset"].float ?? 0)
             
-            for index in 0...3 {
-                let toolName = "tool\(index)"
-                if json["temperature"][toolName] != nil {
-                    self.extruderTemperatures[toolName] = Temperature(
-                        actual: json["temperature"][toolName]["actual"].float ?? 0,
-                        target: json["temperature"][toolName]["target"].float ?? 0,
-                        offset: json["temperature"][toolName]["offset"].float ?? 0)
-                }
+            for (key, subJson) in json["temperature"] {
+                self.temperatures[key] = Temperature(
+                    actual: subJson["actual"].float ?? 0,
+                    target: subJson["target"].float ?? 0,
+                    offset: subJson["offset"].float ?? 0)
             }
             
             self.handleUpdate()

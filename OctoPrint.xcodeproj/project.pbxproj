@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		4CADF17D1B5FCF0E0090AFEC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CADF17C1B5FCF0E0090AFEC /* AppDelegate.swift */; };
 		4CADF17F1B5FCF0E0090AFEC /* OverviewTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CADF17E1B5FCF0E0090AFEC /* OverviewTableViewController.swift */; };
-		4CADF1821B5FCF0E0090AFEC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4CADF1801B5FCF0E0090AFEC /* Main.storyboard */; };
 		4CADF1841B5FCF0E0090AFEC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4CADF1831B5FCF0E0090AFEC /* Assets.xcassets */; };
 		4CADF1871B5FCF0E0090AFEC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4CADF1851B5FCF0E0090AFEC /* LaunchScreen.storyboard */; };
 		4CADF1921B5FCF0E0090AFEC /* OctoPrintTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CADF1911B5FCF0E0090AFEC /* OctoPrintTests.swift */; };
@@ -19,6 +18,8 @@
 		4CADF1BF1B5FD16C0090AFEC /* OctoPrint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CADF1BE1B5FD16C0090AFEC /* OctoPrint.swift */; };
 		4CADF1ED1B5FEA300090AFEC /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4CADF1E61B5FEA250090AFEC /* SwiftyJSON.framework */; };
 		4CADF1EE1B5FEA300090AFEC /* SwiftyJSON.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 4CADF1E61B5FEA250090AFEC /* SwiftyJSON.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		4CB0CCB31B60FAE400673CC9 /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CB0CCB21B60FAE400673CC9 /* TableViewController.swift */; };
+		4CB0CCB81B610C1200673CC9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4CB0CCB61B610C1200673CC9 /* Main.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -127,7 +128,6 @@
 		4CADF1791B5FCF0E0090AFEC /* OctoPrint.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OctoPrint.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4CADF17C1B5FCF0E0090AFEC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4CADF17E1B5FCF0E0090AFEC /* OverviewTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverviewTableViewController.swift; sourceTree = "<group>"; };
-		4CADF1811B5FCF0E0090AFEC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		4CADF1831B5FCF0E0090AFEC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4CADF1861B5FCF0E0090AFEC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4CADF1881B5FCF0E0090AFEC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -140,6 +140,8 @@
 		4CADF1AA1B5FCFE70090AFEC /* Alamofire.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Alamofire.xcodeproj; path = Alamofire/Alamofire.xcodeproj; sourceTree = "<group>"; };
 		4CADF1BE1B5FD16C0090AFEC /* OctoPrint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OctoPrint.swift; sourceTree = "<group>"; };
 		4CADF1DE1B5FEA250090AFEC /* SwiftyJSON.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SwiftyJSON.xcodeproj; path = SwiftyJSON/SwiftyJSON.xcodeproj; sourceTree = "<group>"; };
+		4CB0CCB21B60FAE400673CC9 /* TableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
+		4CB0CCB71B610C1200673CC9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -172,6 +174,7 @@
 		4CADF1701B5FCF0E0090AFEC = {
 			isa = PBXGroup;
 			children = (
+				4CB0CCB21B60FAE400673CC9 /* TableViewController.swift */,
 				4CADF1DE1B5FEA250090AFEC /* SwiftyJSON.xcodeproj */,
 				4CADF17B1B5FCF0E0090AFEC /* OctoPrint */,
 				4CADF1901B5FCF0E0090AFEC /* OctoPrintTests */,
@@ -196,7 +199,7 @@
 			children = (
 				4CADF17C1B5FCF0E0090AFEC /* AppDelegate.swift */,
 				4CADF17E1B5FCF0E0090AFEC /* OverviewTableViewController.swift */,
-				4CADF1801B5FCF0E0090AFEC /* Main.storyboard */,
+				4CB0CCB61B610C1200673CC9 /* Main.storyboard */,
 				4CADF1831B5FCF0E0090AFEC /* Assets.xcassets */,
 				4CADF1851B5FCF0E0090AFEC /* LaunchScreen.storyboard */,
 				4CADF1881B5FCF0E0090AFEC /* Info.plist */,
@@ -420,9 +423,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4CB0CCB81B610C1200673CC9 /* Main.storyboard in Resources */,
 				4CADF1871B5FCF0E0090AFEC /* LaunchScreen.storyboard in Resources */,
 				4CADF1841B5FCF0E0090AFEC /* Assets.xcassets in Resources */,
-				4CADF1821B5FCF0E0090AFEC /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -450,6 +453,7 @@
 				4CADF17F1B5FCF0E0090AFEC /* OverviewTableViewController.swift in Sources */,
 				4CADF17D1B5FCF0E0090AFEC /* AppDelegate.swift in Sources */,
 				4CADF1BF1B5FD16C0090AFEC /* OctoPrint.swift in Sources */,
+				4CB0CCB31B60FAE400673CC9 /* TableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -495,20 +499,20 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		4CADF1801B5FCF0E0090AFEC /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				4CADF1811B5FCF0E0090AFEC /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		4CADF1851B5FCF0E0090AFEC /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				4CADF1861B5FCF0E0090AFEC /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		4CB0CCB61B610C1200673CC9 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4CB0CCB71B610C1200673CC9 /* Base */,
+			);
+			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
