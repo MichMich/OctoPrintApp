@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		4CADF17D1B5FCF0E0090AFEC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CADF17C1B5FCF0E0090AFEC /* AppDelegate.swift */; };
-		4CADF17F1B5FCF0E0090AFEC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CADF17E1B5FCF0E0090AFEC /* ViewController.swift */; };
+		4CADF17F1B5FCF0E0090AFEC /* OverviewTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CADF17E1B5FCF0E0090AFEC /* OverviewTableViewController.swift */; };
 		4CADF1821B5FCF0E0090AFEC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4CADF1801B5FCF0E0090AFEC /* Main.storyboard */; };
 		4CADF1841B5FCF0E0090AFEC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4CADF1831B5FCF0E0090AFEC /* Assets.xcassets */; };
 		4CADF1871B5FCF0E0090AFEC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4CADF1851B5FCF0E0090AFEC /* LaunchScreen.storyboard */; };
@@ -126,7 +126,7 @@
 /* Begin PBXFileReference section */
 		4CADF1791B5FCF0E0090AFEC /* OctoPrint.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OctoPrint.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4CADF17C1B5FCF0E0090AFEC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		4CADF17E1B5FCF0E0090AFEC /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		4CADF17E1B5FCF0E0090AFEC /* OverviewTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverviewTableViewController.swift; sourceTree = "<group>"; };
 		4CADF1811B5FCF0E0090AFEC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		4CADF1831B5FCF0E0090AFEC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4CADF1861B5FCF0E0090AFEC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -195,7 +195,7 @@
 			isa = PBXGroup;
 			children = (
 				4CADF17C1B5FCF0E0090AFEC /* AppDelegate.swift */,
-				4CADF17E1B5FCF0E0090AFEC /* ViewController.swift */,
+				4CADF17E1B5FCF0E0090AFEC /* OverviewTableViewController.swift */,
 				4CADF1801B5FCF0E0090AFEC /* Main.storyboard */,
 				4CADF1831B5FCF0E0090AFEC /* Assets.xcassets */,
 				4CADF1851B5FCF0E0090AFEC /* LaunchScreen.storyboard */,
@@ -447,7 +447,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4CADF17F1B5FCF0E0090AFEC /* ViewController.swift in Sources */,
+				4CADF17F1B5FCF0E0090AFEC /* OverviewTableViewController.swift in Sources */,
 				4CADF17D1B5FCF0E0090AFEC /* AppDelegate.swift in Sources */,
 				4CADF1BF1B5FD16C0090AFEC /* OctoPrint.swift in Sources */,
 			);
@@ -690,6 +690,7 @@
 				4CADF1A31B5FCF0E0090AFEC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		4CADF1A41B5FCF0E0090AFEC /* Build configuration list for PBXNativeTarget "OctoPrintTests" */ = {
 			isa = XCConfigurationList;
@@ -698,6 +699,7 @@
 				4CADF1A61B5FCF0E0090AFEC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		4CADF1A71B5FCF0E0090AFEC /* Build configuration list for PBXNativeTarget "OctoPrintUITests" */ = {
 			isa = XCConfigurationList;
@@ -706,6 +708,7 @@
 				4CADF1A91B5FCF0E0090AFEC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

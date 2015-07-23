@@ -32,10 +32,8 @@ class OctoPrint {
     let baseUrl = "http://192.168.0.30/api/"
     
     var delegate:OctoPrintDelegate?
-    
     var updateTimeStamp:NSDate?
-    
-    
+  
     // version
     var apiVersion:String = "Unknown"
     var serverVersion:String = "Unknown"
