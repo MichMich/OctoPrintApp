@@ -16,27 +16,25 @@ class OverviewTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "updateUI", name: octoPrintDidUpdateNotifiction, object: nil)
-
-        OctoPrint.sharedInstance.updateAll()
-        
-        NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: Selector("updatePrinterData"), userInfo: nil, repeats: true)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "updateUI", name: OctoPrintNotifications.DidUpdate.rawValue, object: nil)
 
         
         title = "OctoPrint"
+        
+        
+        OctoPrintManager.sharedInstance.updateVersion(autoUpdate:5)
+        OctoPrintManager.sharedInstance.updatePrinter(autoUpdate:1)
     }
     
     
-    func updatePrinterData() {
-        OctoPrint.sharedInstance.updateAll()
-    }
+ 
 
     func updateUI() {
         tableView.reloadData()
     }
     
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        if OctoPrint.sharedInstance.temperatures.count == 0 {
+        if OctoPrintManager.sharedInstance.temperatures.count == 0 {
             return sections.count - 1
         }
         return sections.count
@@ -52,7 +50,7 @@ class OverviewTableViewController: UITableViewController {
                 return 1
             
             case 2:
-                return OctoPrint.sharedInstance.temperatures.count
+                return OctoPrintManager.sharedInstance.temperatures.count
             
             default:
                 return 0
@@ -66,7 +64,7 @@ class OverviewTableViewController: UITableViewController {
     
 	override func tableView(tableView: UITableView, titleForFooterInSection section: Int) -> String? {
 		if section == tableView.numberOfSections - 1 {
-			if let updated = OctoPrint.sharedInstance.updateTimeStamp {
+			if let updated = OctoPrintManager.sharedInstance.updateTimeStamp {
 				let formattedDate = NSDateFormatter.localizedStringFromDate(updated,dateStyle: NSDateFormatterStyle.MediumStyle, timeStyle: .MediumStyle)
 				return "Last update: \(formattedDate)"
 			}
@@ -83,28 +81,28 @@ class OverviewTableViewController: UITableViewController {
         switch shortPath {
             case (0, 0):
                 cell.textLabel?.text = "API"
-                cell.detailTextLabel?.text = OctoPrint.sharedInstance.apiVersion
+                cell.detailTextLabel?.text = OctoPrintManager.sharedInstance.apiVersion
                 cell.userInteractionEnabled = false
             
             case (0, 1):
                 cell.textLabel?.text = "Server"
-                cell.detailTextLabel?.text = OctoPrint.sharedInstance.serverVersion
+                cell.detailTextLabel?.text = OctoPrintManager.sharedInstance.serverVersion
                 cell.userInteractionEnabled = false
             
             case (1, 0):
                 cell.textLabel?.text = "Printer"
-                cell.detailTextLabel?.text = OctoPrint.sharedInstance.printerStateText
+                cell.detailTextLabel?.text = OctoPrintManager.sharedInstance.printerStateText
                 cell.userInteractionEnabled = false
             
             case (2,_):
                 let cell = tableView.dequeueReusableCellWithIdentifier("TemperatureCell", forIndexPath: indexPath)
             
                 var names:[String] = []
-                for (name, _) in OctoPrint.sharedInstance.temperatures {
+                for (name, _) in OctoPrintManager.sharedInstance.temperatures {
                     names.append(name)
                 }
                 
-                if let temperature = OctoPrint.sharedInstance.temperatures[names[indexPath.row]] {
+                if let temperature = OctoPrintManager.sharedInstance.temperatures[names[indexPath.row]] {
                     
                     cell.textLabel?.text = names[indexPath.row]
                     cell.detailTextLabel?.text = "\(temperature.actual.celciusString()) (\(temperature.target.celciusString()))"
@@ -134,7 +132,7 @@ class OverviewTableViewController: UITableViewController {
                 let temperatureSelector = segue.destinationViewController as! TemperatureSelectorTableViewController
                 
                 var names:[String] = []
-                for (name, _) in OctoPrint.sharedInstance.temperatures {
+                for (name, _) in OctoPrintManager.sharedInstance.temperatures {
                     names.append(name)
                 }
                 

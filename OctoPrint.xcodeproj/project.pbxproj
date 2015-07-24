@@ -15,7 +15,7 @@
 		4CADF19D1B5FCF0E0090AFEC /* OctoPrintUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CADF19C1B5FCF0E0090AFEC /* OctoPrintUITests.swift */; };
 		4CADF1B91B5FD0ED0090AFEC /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4CADF1B21B5FCFE70090AFEC /* Alamofire.framework */; };
 		4CADF1BA1B5FD0ED0090AFEC /* Alamofire.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 4CADF1B21B5FCFE70090AFEC /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		4CADF1BF1B5FD16C0090AFEC /* OctoPrint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CADF1BE1B5FD16C0090AFEC /* OctoPrint.swift */; };
+		4CADF1BF1B5FD16C0090AFEC /* OctoPrintManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CADF1BE1B5FD16C0090AFEC /* OctoPrintManager.swift */; };
 		4CADF1ED1B5FEA300090AFEC /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4CADF1E61B5FEA250090AFEC /* SwiftyJSON.framework */; };
 		4CADF1EE1B5FEA300090AFEC /* SwiftyJSON.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 4CADF1E61B5FEA250090AFEC /* SwiftyJSON.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		4CB0CCB31B60FAE400673CC9 /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CB0CCB21B60FAE400673CC9 /* TableViewController.swift */; };
@@ -141,7 +141,7 @@
 		4CADF19C1B5FCF0E0090AFEC /* OctoPrintUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OctoPrintUITests.swift; sourceTree = "<group>"; };
 		4CADF19E1B5FCF0E0090AFEC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4CADF1AA1B5FCFE70090AFEC /* Alamofire.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Alamofire.xcodeproj; path = Alamofire/Alamofire.xcodeproj; sourceTree = "<group>"; };
-		4CADF1BE1B5FD16C0090AFEC /* OctoPrint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OctoPrint.swift; sourceTree = "<group>"; };
+		4CADF1BE1B5FD16C0090AFEC /* OctoPrintManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OctoPrintManager.swift; sourceTree = "<group>"; };
 		4CADF1DE1B5FEA250090AFEC /* SwiftyJSON.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SwiftyJSON.xcodeproj; path = SwiftyJSON/SwiftyJSON.xcodeproj; sourceTree = "<group>"; };
 		4CB0CCB21B60FAE400673CC9 /* TableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
 		4CB0CCB71B610C1200673CC9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -209,7 +209,7 @@
 				4CADF1831B5FCF0E0090AFEC /* Assets.xcassets */,
 				4CADF1851B5FCF0E0090AFEC /* LaunchScreen.storyboard */,
 				4CADF1881B5FCF0E0090AFEC /* Info.plist */,
-				4CADF1BE1B5FD16C0090AFEC /* OctoPrint.swift */,
+				4CADF1BE1B5FD16C0090AFEC /* OctoPrintManager.swift */,
 				4CB0CCB91B61118200673CC9 /* TemperatureSelectorTableViewController.swift */,
 				4CB0CCBB1B611AFB00673CC9 /* PickerTableViewCell.swift */,
 				4CB0CCBD1B61269900673CC9 /* Helpers.swift */,
@@ -463,7 +463,7 @@
 				4CB0CCBE1B61269900673CC9 /* Helpers.swift in Sources */,
 				4CB0CCBC1B611AFB00673CC9 /* PickerTableViewCell.swift in Sources */,
 				4CADF17D1B5FCF0E0090AFEC /* AppDelegate.swift in Sources */,
-				4CADF1BF1B5FD16C0090AFEC /* OctoPrint.swift in Sources */,
+				4CADF1BF1B5FD16C0090AFEC /* OctoPrintManager.swift in Sources */,
 				4CB0CCB31B60FAE400673CC9 /* TableViewController.swift in Sources */,
 				4CB0CCBA1B61118200673CC9 /* TemperatureSelectorTableViewController.swift in Sources */,
 			);

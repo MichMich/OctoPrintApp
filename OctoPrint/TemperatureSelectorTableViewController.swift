@@ -33,10 +33,7 @@ class TemperatureSelectorTableViewController: UITableViewController, UIPickerVie
         title = toolName
         generateManualTemperatures()
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "updateUI", name: octoPrintDidUpdateNotifiction, object: nil)
-        
-        
-        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "updateUI", name: OctoPrintNotifications.DidUpdatePrinter.rawValue, object: nil)
     }
     
     func updateUI() {
@@ -79,7 +76,7 @@ class TemperatureSelectorTableViewController: UITableViewController, UIPickerVie
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("BasicCell", forIndexPath: indexPath)
         
-        if let toolName = toolName, temperature = OctoPrint.sharedInstance.temperatures[toolName] {
+        if let toolName = toolName, temperature = OctoPrintManager.sharedInstance.temperatures[toolName] {
 
             let shortPath = (indexPath.section, indexPath.row)
             switch shortPath {
@@ -110,7 +107,7 @@ class TemperatureSelectorTableViewController: UITableViewController, UIPickerVie
                     let preset = presets[indexPath.row]
                     cell.textLabel?.text = preset.name
                     
-                    if OctoPrint.sharedInstance.toolTypeForTemperatureIdentifier(toolName ?? "") == .Bed {
+                    if OctoPrintManager.sharedInstance.toolTypeForTemperatureIdentifier(toolName ?? "") == .Bed {
                         cell.detailTextLabel?.text =  preset.bedTemperature.celciusString()
                     } else {
                         cell.detailTextLabel?.text =  preset.extruderTemperature.celciusString()
@@ -128,7 +125,7 @@ class TemperatureSelectorTableViewController: UITableViewController, UIPickerVie
         if indexPath.section == 2 {
             let preset = presets[indexPath.row]
             let newTargetTemperature:Int
-            if OctoPrint.sharedInstance.toolTypeForTemperatureIdentifier(toolName ?? "") == .Bed {
+            if OctoPrintManager.sharedInstance.toolTypeForTemperatureIdentifier(toolName ?? "") == .Bed {
                 newTargetTemperature =  preset.bedTemperature
             } else {
                 newTargetTemperature =  preset.extruderTemperature
@@ -143,13 +140,13 @@ class TemperatureSelectorTableViewController: UITableViewController, UIPickerVie
     func generateManualTemperatures() {
         manualTemperatures = []
         
-        let toolTemperature = OctoPrint.sharedInstance.temperatures[toolName!]
+        let toolTemperature = OctoPrintManager.sharedInstance.temperatures[toolName!]
         let currentTargetTemperature = Int(toolTemperature?.target ?? 0)
         
         var maxTemp = 300
         var stepTemp = 5
         
-        if OctoPrint.sharedInstance.toolTypeForTemperatureIdentifier(toolName ?? "") == .Bed {
+        if OctoPrintManager.sharedInstance.toolTypeForTemperatureIdentifier(toolName ?? "") == .Bed {
             maxTemp = 120
             stepTemp = 5
         }
@@ -173,7 +170,7 @@ class TemperatureSelectorTableViewController: UITableViewController, UIPickerVie
    
     func setTargetTemperature(target:Float) {
         if let toolName = toolName {
-            OctoPrint.sharedInstance.setTargetTemperature(target, forTool: toolName)
+            OctoPrintManager.sharedInstance.setTargetTemperature(target, forTool: toolName)
         }
     }
 
