@@ -17,10 +17,8 @@ class OverviewTableViewController: UITableViewController {
         super.viewDidLoad()
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "updateUI", key: .DidUpdate, object: nil)
-
         
         title = "OctoPrint"
-        
         
         OctoPrintManager.sharedInstance.updateVersion(autoUpdate:5)
         OctoPrintManager.sharedInstance.updatePrinter(autoUpdate:1)
@@ -75,24 +73,30 @@ class OverviewTableViewController: UITableViewController {
 	
 	override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCellWithIdentifier("BasicCell", forIndexPath: indexPath)
+        
         
         let shortPath = (indexPath.section, indexPath.row)
         switch shortPath {
             case (0, 0):
+                let cell = tableView.dequeueReusableCellWithIdentifier("BasicCell", forIndexPath: indexPath)
                 cell.textLabel?.text = "API"
                 cell.detailTextLabel?.text = OctoPrintManager.sharedInstance.apiVersion
                 cell.userInteractionEnabled = false
+            return cell
             
             case (0, 1):
+                let cell = tableView.dequeueReusableCellWithIdentifier("BasicCell", forIndexPath: indexPath)
                 cell.textLabel?.text = "Server"
                 cell.detailTextLabel?.text = OctoPrintManager.sharedInstance.serverVersion
                 cell.userInteractionEnabled = false
+                return cell
             
             case (1, 0):
+                let cell = tableView.dequeueReusableCellWithIdentifier("BasicCell", forIndexPath: indexPath)
                 cell.textLabel?.text = "Printer"
                 cell.detailTextLabel?.text = OctoPrintManager.sharedInstance.printerStateText
                 cell.userInteractionEnabled = false
+                return cell
             
             case (2,_):
                 let cell = tableView.dequeueReusableCellWithIdentifier("TemperatureCell", forIndexPath: indexPath)
@@ -108,12 +112,16 @@ class OverviewTableViewController: UITableViewController {
                     cell.detailTextLabel?.text = "\(temperature.actual.celciusString()) (\(temperature.target.celciusString()))"
                 }
             
+                return cell
+            
             
             default:
-                break
+                let cell = tableView.dequeueReusableCellWithIdentifier("BasicCell", forIndexPath: indexPath)
+                cell.textLabel?.text = "Unknown cell!"
+                return cell
         }
         
-        return cell
+   
 		
 	}
     

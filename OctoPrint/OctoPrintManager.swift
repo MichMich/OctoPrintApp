@@ -45,6 +45,7 @@ enum OctoPrintNotifications:String {
     case DidUpdateVersion = "com.xonaymedia.OctoPrintApp.OctoPrintDidUpdateVersion"
     case DidUpdatePrinter = "com.xonaymedia.OctoPrintApp.OctoPrintDidUpdatePrinter"
     case DidSetPrinterTool = "com.xonaymedia.OctoPrintApp.OctoPrintDidDidSetPrinterTool"
+    case DidSetPrinterBed = "com.xonaymedia.OctoPrintApp.OctoPrintDidDidSetPrinterBed"
 }
 
 /*
@@ -116,9 +117,13 @@ class OctoPrintAPITask: NSObject {
         OctoPrintAPITask.alamofireManager.request((self.method == .GET) ? .GET : .POST, endPoint, parameters: parameters, encoding: .JSON).responseJSON {
             (request, response, jsonData, error) -> Void in
             if let error = error {
+                print(error)
+                print(endPoint)
+                print(self.parameters)
                 self.failureBlock?(error)
                 self.scheduleTimer()
             } else {
+                //print(jsonData)
                 let json = JSON(jsonData ?? [])
                 self.lastSuccessfulRun = NSDate()
                 self.successBlock?(json)
@@ -151,6 +156,7 @@ class OctoPrintManager {
         static var updateVersion = OctoPrintAPITask(endPoint: "version")
         static var updatePrinter = OctoPrintAPITask(endPoint: "printer")
         static var setPrinterTool = OctoPrintAPITask(endPoint: "printer/tool")
+        static var setPrinterBed = OctoPrintAPITask(endPoint: "printer/bed")
     }
     
     func updateVersion(autoUpdate interval: NSTimeInterval? = nil) {
@@ -176,6 +182,7 @@ class OctoPrintManager {
         tasks.updatePrinter.onSuccess({ (json)->() in
             
             if let json = json {
+                self.updateTimeStamp = tasks.updatePrinter.lastSuccessfulRun
                 
                 self.printerStateText = json["state"]["text"].string ?? "Unknown"
                 
@@ -207,16 +214,31 @@ class OctoPrintManager {
         
         print("Target for \(toolName): \(targetTemperature)")
         
-        tasks.setPrinterTool.parameters([
-            "command": "target",
-            "targets": [
-                toolName: targetTemperature
-            ]
-        ]).method(.POST).onSuccess({ (json)->() in
+        if self.toolTypeForTemperatureIdentifier(toolName) == .Extruder {
+        
+            tasks.setPrinterTool.parameters([
+                "command": "target",
+                "targets": [
+                    toolName: targetTemperature
+                ]
+            ]).method(.POST).onSuccess({ (json)->() in
+                
+                self.broadcastNotification(.DidSetPrinterTool)
+                
+            }).fire()
+
+        } else {
+        
+            tasks.setPrinterBed.parameters([
+                "command": "target",
+                "target": targetTemperature
+            ]).method(.POST).onSuccess({ (json)->() in
+                
+                self.broadcastNotification(.DidSetPrinterBed)
+                
+            }).fire()
             
-            self.broadcastNotification(.DidSetPrinterTool)
-            
-        }).fire()
+        }
 
     }
    

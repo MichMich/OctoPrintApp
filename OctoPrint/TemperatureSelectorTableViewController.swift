@@ -47,6 +47,7 @@ class TemperatureSelectorTableViewController: UITableViewController, Temperature
 
         title = toolName
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "updateValues", key: .DidUpdatePrinter, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "updateValues", key: .DidUpdatePrinter, object: nil)
         updateValues()
     }
     
