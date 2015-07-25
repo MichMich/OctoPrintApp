@@ -11,6 +11,11 @@ import Foundation
 
 extension Float {
     func celciusString() -> String {
+        
+        if Float(Int(self)) == self {
+           return "\(Int(self))º C"
+        }
+        
         return "\(self)º C"
     }
 }

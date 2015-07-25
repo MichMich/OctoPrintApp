@@ -21,7 +21,7 @@
 		4CB0CCB31B60FAE400673CC9 /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CB0CCB21B60FAE400673CC9 /* TableViewController.swift */; };
 		4CB0CCB81B610C1200673CC9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4CB0CCB61B610C1200673CC9 /* Main.storyboard */; };
 		4CB0CCBA1B61118200673CC9 /* TemperatureSelectorTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CB0CCB91B61118200673CC9 /* TemperatureSelectorTableViewController.swift */; };
-		4CB0CCBC1B611AFB00673CC9 /* PickerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CB0CCBB1B611AFB00673CC9 /* PickerTableViewCell.swift */; };
+		4CB0CCBC1B611AFB00673CC9 /* TemperaturePickerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CB0CCBB1B611AFB00673CC9 /* TemperaturePickerTableViewCell.swift */; };
 		4CB0CCBE1B61269900673CC9 /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CB0CCBD1B61269900673CC9 /* Helpers.swift */; };
 /* End PBXBuildFile section */
 
@@ -146,7 +146,7 @@
 		4CB0CCB21B60FAE400673CC9 /* TableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
 		4CB0CCB71B610C1200673CC9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		4CB0CCB91B61118200673CC9 /* TemperatureSelectorTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TemperatureSelectorTableViewController.swift; sourceTree = "<group>"; };
-		4CB0CCBB1B611AFB00673CC9 /* PickerTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PickerTableViewCell.swift; sourceTree = "<group>"; };
+		4CB0CCBB1B611AFB00673CC9 /* TemperaturePickerTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TemperaturePickerTableViewCell.swift; sourceTree = "<group>"; };
 		4CB0CCBD1B61269900673CC9 /* Helpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Helpers.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -211,7 +211,7 @@
 				4CADF1881B5FCF0E0090AFEC /* Info.plist */,
 				4CADF1BE1B5FD16C0090AFEC /* OctoPrintManager.swift */,
 				4CB0CCB91B61118200673CC9 /* TemperatureSelectorTableViewController.swift */,
-				4CB0CCBB1B611AFB00673CC9 /* PickerTableViewCell.swift */,
+				4CB0CCBB1B611AFB00673CC9 /* TemperaturePickerTableViewCell.swift */,
 				4CB0CCBD1B61269900673CC9 /* Helpers.swift */,
 			);
 			path = OctoPrint;
@@ -461,7 +461,7 @@
 			files = (
 				4CADF17F1B5FCF0E0090AFEC /* OverviewTableViewController.swift in Sources */,
 				4CB0CCBE1B61269900673CC9 /* Helpers.swift in Sources */,
-				4CB0CCBC1B611AFB00673CC9 /* PickerTableViewCell.swift in Sources */,
+				4CB0CCBC1B611AFB00673CC9 /* TemperaturePickerTableViewCell.swift in Sources */,
 				4CADF17D1B5FCF0E0090AFEC /* AppDelegate.swift in Sources */,
 				4CADF1BF1B5FD16C0090AFEC /* OctoPrintManager.swift in Sources */,
 				4CB0CCB31B60FAE400673CC9 /* TableViewController.swift in Sources */,

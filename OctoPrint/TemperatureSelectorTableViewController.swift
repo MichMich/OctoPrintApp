@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TemperatureSelectorTableViewController: UITableViewController, UIPickerViewDataSource, UIPickerViewDelegate {
+class TemperatureSelectorTableViewController: UITableViewController, TemperaturePickerTableViewCellDelegate {
 
     struct Preset {
         let name:String
@@ -25,15 +25,39 @@ class TemperatureSelectorTableViewController: UITableViewController, UIPickerVie
         Preset(name: "XTCopolyester", extruderTemperature: 240, bedTemperature: 60)
     ]
 
+  
+    var actualTemperature: Float = 0 {
+        didSet {
+            if oldValue != actualTemperature {
+                updateUI()
+            }
+        }
+    }
+    var targetTemperature: Float = 0 {
+        didSet {
+            if oldValue != targetTemperature {
+                updateUI()
+            }
+        }
+    }
     
-    var manualTemperatures = [0]
     
     override func viewDidLoad() {
         super.viewDidLoad()
+
         title = toolName
-        generateManualTemperatures()
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "updateValues", key: .DidUpdatePrinter, object: nil)
+        updateValues()
+    }
+    
+   
+    
+    func updateValues() {
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "updateUI", name: OctoPrintNotifications.DidUpdatePrinter.rawValue, object: nil)
+        if let toolName = toolName, temperature = OctoPrintManager.sharedInstance.temperatures[toolName] {
+            actualTemperature = temperature.actual
+            targetTemperature = temperature.target
+        }
     }
     
     func updateUI() {
@@ -42,7 +66,6 @@ class TemperatureSelectorTableViewController: UITableViewController, UIPickerVie
 
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
         return sections.count
     }
 
@@ -74,50 +97,60 @@ class TemperatureSelectorTableViewController: UITableViewController, UIPickerVie
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("BasicCell", forIndexPath: indexPath)
         
-        if let toolName = toolName, temperature = OctoPrintManager.sharedInstance.temperatures[toolName] {
+        
+       
 
-            let shortPath = (indexPath.section, indexPath.row)
-            switch shortPath {
-                case (0, 0):
-                    cell.textLabel?.text = "Actual"
-                    cell.detailTextLabel?.text =  temperature.actual.celciusString()
-                    cell.userInteractionEnabled = false
-                
-                case (0, 1):
-                    cell.textLabel?.text = "Target"
-                    cell.detailTextLabel?.text = temperature.target.celciusString()
-                    cell.userInteractionEnabled = false
+        let shortPath = (indexPath.section, indexPath.row)
+        switch shortPath {
+            case (0, 0):
+                let cell = tableView.dequeueReusableCellWithIdentifier("BasicCell", forIndexPath: indexPath)
+                cell.textLabel?.text = "Actual"
+                cell.detailTextLabel?.text =  actualTemperature.celciusString()
+                cell.userInteractionEnabled = false
+                return cell
+            
+            
+            case (0, 1):
+                let cell = tableView.dequeueReusableCellWithIdentifier("BasicCell", forIndexPath: indexPath)
+                cell.textLabel?.text = "Target"
+                cell.detailTextLabel?.text = targetTemperature.celciusString()
+                cell.userInteractionEnabled = false
+                return cell
 
+            
+            case (1,_):
+                 let cell = tableView.dequeueReusableCellWithIdentifier("TemperaturePickerCell", forIndexPath: indexPath) as! TemperaturePickerTableViewCell
+                 cell.delegate = self
+                 cell.maxTemp = 300
+                 cell.stepSize = 5
+                 cell.temperature = targetTemperature
+            
+                return cell
+                 
+            case (2,_):
+                let cell = tableView.dequeueReusableCellWithIdentifier("BasicCell", forIndexPath: indexPath)
+                cell.userInteractionEnabled = true
                 
-                case (1,_):
-                     let pickerCell = tableView.dequeueReusableCellWithIdentifier("PickerCell", forIndexPath: indexPath) as! PickerTableViewCell
-                     pickerCell.pickerView.dataSource = self
-                     pickerCell.pickerView.delegate = self
-
+                let preset = presets[indexPath.row]
+                cell.textLabel?.text = preset.name
                 
-                     if let index = manualTemperatures.indexOf(Int(temperature.target)) {
-                        pickerCell.pickerView.selectRow(index, inComponent: 0, animated: false)
-                     }
-                case (2,_):
-                    
-                    cell.userInteractionEnabled = true
-                    
-                    let preset = presets[indexPath.row]
-                    cell.textLabel?.text = preset.name
-                    
-                    if OctoPrintManager.sharedInstance.toolTypeForTemperatureIdentifier(toolName ?? "") == .Bed {
-                        cell.detailTextLabel?.text =  preset.bedTemperature.celciusString()
-                    } else {
-                        cell.detailTextLabel?.text =  preset.extruderTemperature.celciusString()
-                    }
+                if OctoPrintManager.sharedInstance.toolTypeForTemperatureIdentifier(toolName ?? "") == .Bed {
+                    cell.detailTextLabel?.text =  preset.bedTemperature.celciusString()
+                } else {
+                    cell.detailTextLabel?.text =  preset.extruderTemperature.celciusString()
+                }
+            
+                return cell
+            default:
                 
-                default:
-                break
-            }
+                    let cell = tableView.dequeueReusableCellWithIdentifier("BasicCell", forIndexPath: indexPath)
+                    cell.textLabel?.text = "Unknow cell!"
+                    return cell
+            
         }
-        return cell
+       
+        
     }
     
 
@@ -131,44 +164,15 @@ class TemperatureSelectorTableViewController: UITableViewController, UIPickerVie
                 newTargetTemperature =  preset.extruderTemperature
             }
             
-            setTargetTemperature(Float(newTargetTemperature))
+            changeTargetTemperatureTo(Float(newTargetTemperature))
         }
         
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
     }
     
-    func generateManualTemperatures() {
-        manualTemperatures = []
-        
-        let toolTemperature = OctoPrintManager.sharedInstance.temperatures[toolName!]
-        let currentTargetTemperature = Int(toolTemperature?.target ?? 0)
-        
-        var maxTemp = 300
-        var stepTemp = 5
-        
-        if OctoPrintManager.sharedInstance.toolTypeForTemperatureIdentifier(toolName ?? "") == .Bed {
-            maxTemp = 120
-            stepTemp = 5
-        }
-        
-        var temperature:Int
-        var currentTemperatureAdded = false
-        for temperature = 0; temperature <= maxTemp; temperature += stepTemp {
-            
-            if temperature == currentTargetTemperature {
-                currentTemperatureAdded = true
-            }
-            
-            if !currentTemperatureAdded && temperature > currentTargetTemperature  {
-                manualTemperatures.append(currentTargetTemperature)
-                currentTemperatureAdded = true
-            }
-            
-            manualTemperatures.append(temperature)
-        }
-    }
+    
    
-    func setTargetTemperature(target:Float) {
+    func changeTargetTemperatureTo(target:Float) {
         if let toolName = toolName {
             OctoPrintManager.sharedInstance.setTargetTemperature(target, forTool: toolName)
         }
@@ -176,28 +180,10 @@ class TemperatureSelectorTableViewController: UITableViewController, UIPickerVie
 
 }
 
-
-// UIPickerViewDataSource
+// TemperaturePickerTableViewCellDelegate
 extension TemperatureSelectorTableViewController {
-    
-    func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
-        return 1
+    func temperaturePickerCellDidUpdate(temperaturePickerCell: TemperaturePickerTableViewCell) {
+        self.changeTargetTemperatureTo(temperaturePickerCell.temperature)
     }
-
-    func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return manualTemperatures.count
-    }
-    
-    
 }
 
-// UIPickerViewDelegate
-extension TemperatureSelectorTableViewController {
-    func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return manualTemperatures[row].celciusString()
-    }
-    
-    func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        setTargetTemperature(Float(manualTemperatures[row]))
-    }
-}

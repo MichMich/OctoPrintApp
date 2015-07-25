@@ -16,7 +16,7 @@ class OverviewTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "updateUI", name: OctoPrintNotifications.DidUpdate.rawValue, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "updateUI", key: .DidUpdate, object: nil)
 
         
         title = "OctoPrint"

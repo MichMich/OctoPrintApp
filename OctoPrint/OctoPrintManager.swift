@@ -10,16 +10,14 @@ import Foundation
 import Alamofire
 import SwiftyJSON
 
+/*
+ * Structs & enums
+ */
 
-struct Temperature {
+struct ToolTemperature {
     var actual:Float
     var target:Float
     var offset:Float
-}
-
-enum ToolType {
-    case Bed
-    case Extruder
 }
 
 struct StateFlags {
@@ -32,12 +30,31 @@ struct StateFlags {
     var closedOrError:Bool
 }
 
+enum ToolType {
+    case Bed
+    case Extruder
+}
+
 enum OctoPrintAPIMethod {
     case GET
     case POST
 }
 
+enum OctoPrintNotifications:String {
+    case DidUpdate = "com.xonaymedia.OctoPrintApp.OctoPrintDidUpdate"
+    case DidUpdateVersion = "com.xonaymedia.OctoPrintApp.OctoPrintDidUpdateVersion"
+    case DidUpdatePrinter = "com.xonaymedia.OctoPrintApp.OctoPrintDidUpdatePrinter"
+    case DidSetPrinterTool = "com.xonaymedia.OctoPrintApp.OctoPrintDidDidSetPrinterTool"
+}
+
+/*
+ * OctoPrintAPITask
+ * This object is responible for the api call and will be reused.
+ */
+
 class OctoPrintAPITask: NSObject {
+    
+    static let alamofireManager = Alamofire.Manager(withHeaders: ["X-Api-Key": "6F72A90FCD4C4AF6A7F7836F787681B6"])
     
     var endPoint:String
     private var successBlock:((JSON?)->())?
@@ -96,7 +113,7 @@ class OctoPrintAPITask: NSObject {
     private func executeCall() {
         let endPoint = "http://192.168.0.30/api/\(self.endPoint)"
         
-        OctoPrintManager.sharedInstance.alamoFireManager.request((self.method == .GET) ? .GET : .POST, endPoint, parameters: parameters, encoding: .JSON).responseJSON {
+        OctoPrintAPITask.alamofireManager.request((self.method == .GET) ? .GET : .POST, endPoint, parameters: parameters, encoding: .JSON).responseJSON {
             (request, response, jsonData, error) -> Void in
             if let error = error {
                 self.failureBlock?(error)
@@ -111,26 +128,12 @@ class OctoPrintAPITask: NSObject {
     }
 }
 
-enum OctoPrintNotifications:String {
-    case DidUpdate = "com.xonaymedia.OctoPrintApp.OctoPrintDidUpdate"
-    case DidUpdateVersion = "com.xonaymedia.OctoPrintApp.OctoPrintDidUpdateVersion"
-    case DidUpdatePrinter = "com.xonaymedia.OctoPrintApp.OctoPrintDidUpdatePrinter"
-    case DidSetPrinterTool = "com.xonaymedia.OctoPrintApp.OctoPrintDidDidSetPrinterTool"
-}
+
+
+
 
 class OctoPrintManager {
     static let sharedInstance = OctoPrintManager()
-    
-    var alamoFireManager:Alamofire.Manager = {
-        var defaultHeaders = Alamofire.Manager.sharedInstance.session.configuration.HTTPAdditionalHeaders ?? [:]
-        defaultHeaders["X-Api-Key"] = "6F72A90FCD4C4AF6A7F7836F787681B6"
-        
-        let configuration = NSURLSessionConfiguration.defaultSessionConfiguration()
-        configuration.HTTPAdditionalHeaders = defaultHeaders
-        
-        return Alamofire.Manager(configuration: configuration)
-    }()
-    
     
     // update info
     var updateTimeStamp:NSDate?
@@ -142,7 +145,7 @@ class OctoPrintManager {
     // printer
     var printerStateText:String = "Unknown"
     var printerStateFlags:StateFlags = StateFlags(operational: false, paused: false, printing: false, sdReady: false, error: false, ready: false, closedOrError: false)
-    var temperatures:[String:Temperature] = [:]
+    var temperatures:[String:ToolTemperature] = [:]
     
     private enum tasks {
         static var updateVersion = OctoPrintAPITask(endPoint: "version")
@@ -186,9 +189,9 @@ class OctoPrintManager {
                     closedOrError: json["state"]["flags"]["closedOrError"].bool ?? false)
                 
                 for (key, subJson) in json["temperature"] {
-                    self.temperatures[key] = Temperature(
+                    self.temperatures[key] = ToolTemperature(
                         actual: subJson["actual"].float ?? 0,
-                        target: subJson["target"].float ?? 0,
+                        target: 99, //subJson["target"].float ?? 0,
                         offset: subJson["offset"].float ?? 0)
                 }
                 
@@ -210,21 +213,78 @@ class OctoPrintManager {
                 toolName: targetTemperature
             ]
         ]).method(.POST).onSuccess({ (json)->() in
+            
             self.broadcastNotification(.DidSetPrinterTool)
+            
         }).fire()
 
     }
    
     func toolTypeForTemperatureIdentifier(identifier:String) ->ToolType {
-        if identifier == "bed" {
-            return .Bed
-        }
-        return .Extruder
+        return (identifier.lowercaseString == "bed") ? .Bed : .Extruder
     }
     
+    // Private methods
+    
     private func broadcastNotification(notification:OctoPrintNotifications) {
-        print(notification.rawValue)
-        NSNotificationCenter.defaultCenter().postNotificationName(notification.rawValue, object: self)
+        //print(notification.rawValue)
+        NSNotificationCenter.defaultCenter().postNotificationKey(notification, object: self)
     }
+}
+
+
+
+
+/*
+ * Extensions
+ */
+
+
+// Alamofire.Manager extension to create managers with default headers.
+
+extension Alamofire.Manager {
+    convenience init(withHeaders headers: [String:String]) {
+        var defaultHeaders = Alamofire.Manager.sharedInstance.session.configuration.HTTPAdditionalHeaders ?? [:]
+        
+        for (key, value) in headers {
+            defaultHeaders[key] = value
+        }
+        
+        let configuration = NSURLSessionConfiguration.defaultSessionConfiguration()
+        configuration.HTTPAdditionalHeaders = defaultHeaders
+        
+        self.init(configuration: configuration)
+    }
+}
+
+
+//  NSNotificationCenter extension to handle OctoPrintNotifications.
+
+extension NSNotificationCenter {
+    
+    func addObserver(observer: AnyObject, selector aSelector: Selector, key aKey: OctoPrintNotifications) {
+        self.addObserver(observer, selector: aSelector, name: aKey.rawValue, object: nil)
+    }
+    
+    func addObserver(observer: AnyObject, selector aSelector: Selector, key aKey: OctoPrintNotifications, object anObject: AnyObject?) {
+        self.addObserver(observer, selector: aSelector, name: aKey.rawValue, object: anObject)
+    }
+    
+    func removeObserver(observer: AnyObject, key aKey: OctoPrintNotifications, object anObject: AnyObject?) {
+        self.removeObserver(observer, name: aKey.rawValue, object: anObject)
+    }
+    
+    func postNotificationKey(key: OctoPrintNotifications, object anObject: AnyObject?) {
+        self.postNotificationName(key.rawValue, object: anObject)
+    }
+    
+    func postNotificationKey(key: OctoPrintNotifications, object anObject: AnyObject?, userInfo aUserInfo: [NSObject : AnyObject]?) {
+        self.postNotificationName(key.rawValue, object: anObject, userInfo: aUserInfo)
+    }
+    
+    func addObserverForKey(key: OctoPrintNotifications, object obj: AnyObject?, queue: NSOperationQueue?, usingBlock block: (NSNotification!) -> Void) -> NSObjectProtocol {
+        return self.addObserverForName(key.rawValue, object: obj, queue: queue, usingBlock: block)
+    }
+    
 }
 

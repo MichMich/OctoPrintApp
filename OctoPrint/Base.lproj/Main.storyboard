@@ -38,21 +38,13 @@
                                     </subviews>
                                 </tableViewCellContentView>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="PickerCell" rowHeight="150" id="ilD-wP-dBi" customClass="PickerTableViewCell" customModule="OctoPrint" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="TemperaturePickerCell" rowHeight="150" id="ilD-wP-dBi" customClass="TemperaturePickerTableViewCell" customModule="OctoPrint" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="158" width="600" height="150"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ilD-wP-dBi" id="I5R-oe-v3f">
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="149"/>
                                     <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8aG-6A-IoR">
-                                            <rect key="frame" x="0.0" y="-86" width="600" height="216"/>
-                                        </pickerView>
-                                    </subviews>
                                 </tableViewCellContentView>
-                                <connections>
-                                    <outlet property="pickerView" destination="8aG-6A-IoR" id="BdZ-ql-Shp"/>
-                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <sections/>
