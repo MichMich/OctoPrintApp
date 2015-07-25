@@ -16,7 +16,9 @@ class TemperatureSelectorTableViewController: UITableViewController, Temperature
         let bedTemperature:Int
     }
     
-    var toolName:String?
+    var heatedComponent:OPHeatedComponent!
+    
+    
     let sections = ["Current","Manual","Presets"]
     let presets = [
         Preset(name: "ABS", extruderTemperature: 240, bedTemperature: 110),
@@ -26,40 +28,21 @@ class TemperatureSelectorTableViewController: UITableViewController, Temperature
     ]
 
   
-    var actualTemperature: Float = 0 {
-        didSet {
-            if oldValue != actualTemperature {
-                updateUI()
-            }
-        }
-    }
-    var targetTemperature: Float = 0 {
-        didSet {
-            if oldValue != targetTemperature {
-                updateUI()
-            }
-        }
-    }
+
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        title = toolName
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "updateValues", key: .DidUpdatePrinter, object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "updateValues", key: .DidUpdatePrinter, object: nil)
-        updateValues()
+        title = heatedComponent.identifier
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "updateUI", key: .DidUpdatePrinter, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "updateUI", key: .DidUpdatePrinter, object: nil)
+
     }
     
    
     
-    func updateValues() {
-        
-        if let toolName = toolName, temperature = OctoPrintManager.sharedInstance.temperatures[toolName] {
-            actualTemperature = temperature.actual
-            targetTemperature = temperature.target
-        }
-    }
+
     
     func updateUI() {
         tableView.reloadData()
@@ -107,7 +90,7 @@ class TemperatureSelectorTableViewController: UITableViewController, Temperature
             case (0, 0):
                 let cell = tableView.dequeueReusableCellWithIdentifier("BasicCell", forIndexPath: indexPath)
                 cell.textLabel?.text = "Actual"
-                cell.detailTextLabel?.text =  actualTemperature.celciusString()
+                cell.detailTextLabel?.text =  heatedComponent.actualTemperature.celciusString()
                 cell.userInteractionEnabled = false
                 return cell
             
@@ -115,7 +98,7 @@ class TemperatureSelectorTableViewController: UITableViewController, Temperature
             case (0, 1):
                 let cell = tableView.dequeueReusableCellWithIdentifier("BasicCell", forIndexPath: indexPath)
                 cell.textLabel?.text = "Target"
-                cell.detailTextLabel?.text = targetTemperature.celciusString()
+                cell.detailTextLabel?.text = heatedComponent.targetTemperature.celciusString()
                 cell.userInteractionEnabled = false
                 return cell
 
@@ -125,7 +108,7 @@ class TemperatureSelectorTableViewController: UITableViewController, Temperature
                  cell.delegate = self
                  cell.maxTemp = 300
                  cell.stepSize = 5
-                 cell.temperature = targetTemperature
+                 cell.temperature = heatedComponent.targetTemperature
             
                 return cell
                  
@@ -136,7 +119,7 @@ class TemperatureSelectorTableViewController: UITableViewController, Temperature
                 let preset = presets[indexPath.row]
                 cell.textLabel?.text = preset.name
                 
-                if OctoPrintManager.sharedInstance.toolTypeForTemperatureIdentifier(toolName ?? "") == .Bed {
+                if heatedComponent.componentType == .Bed {
                     cell.detailTextLabel?.text =  preset.bedTemperature.celciusString()
                 } else {
                     cell.detailTextLabel?.text =  preset.extruderTemperature.celciusString()
@@ -159,7 +142,7 @@ class TemperatureSelectorTableViewController: UITableViewController, Temperature
         if indexPath.section == 2 {
             let preset = presets[indexPath.row]
             let newTargetTemperature:Int
-            if OctoPrintManager.sharedInstance.toolTypeForTemperatureIdentifier(toolName ?? "") == .Bed {
+            if heatedComponent.componentType == .Bed {
                 newTargetTemperature =  preset.bedTemperature
             } else {
                 newTargetTemperature =  preset.extruderTemperature
@@ -174,9 +157,7 @@ class TemperatureSelectorTableViewController: UITableViewController, Temperature
     
    
     func changeTargetTemperatureTo(target:Float) {
-        if let toolName = toolName {
-            OctoPrintManager.sharedInstance.setTargetTemperature(target, forTool: toolName)
-        }
+        heatedComponent.setTargetTemperature(target)
     }
 
 }

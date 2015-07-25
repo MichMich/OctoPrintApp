@@ -20,8 +20,8 @@ class OverviewTableViewController: UITableViewController {
         
         title = "OctoPrint"
         
-        OctoPrintManager.sharedInstance.updateVersion(autoUpdate:5)
-        OctoPrintManager.sharedInstance.updatePrinter(autoUpdate:1)
+        OPManager.sharedInstance.updateVersion(autoUpdate:5)
+        OPManager.sharedInstance.updatePrinter(autoUpdate:1)
     }
     
     
@@ -32,9 +32,6 @@ class OverviewTableViewController: UITableViewController {
     }
     
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        if OctoPrintManager.sharedInstance.temperatures.count == 0 {
-            return sections.count - 1
-        }
         return sections.count
     }
     
@@ -48,7 +45,7 @@ class OverviewTableViewController: UITableViewController {
                 return 1
             
             case 2:
-                return OctoPrintManager.sharedInstance.temperatures.count
+                return OPManager.sharedInstance.tools.count + 1
             
             default:
                 return 0
@@ -62,7 +59,7 @@ class OverviewTableViewController: UITableViewController {
     
 	override func tableView(tableView: UITableView, titleForFooterInSection section: Int) -> String? {
 		if section == tableView.numberOfSections - 1 {
-			if let updated = OctoPrintManager.sharedInstance.updateTimeStamp {
+			if let updated = OPManager.sharedInstance.updateTimeStamp {
 				let formattedDate = NSDateFormatter.localizedStringFromDate(updated,dateStyle: NSDateFormatterStyle.MediumStyle, timeStyle: .MediumStyle)
 				return "Last update: \(formattedDate)"
 			}
@@ -80,52 +77,40 @@ class OverviewTableViewController: UITableViewController {
             case (0, 0):
                 let cell = tableView.dequeueReusableCellWithIdentifier("BasicCell", forIndexPath: indexPath)
                 cell.textLabel?.text = "API"
-                cell.detailTextLabel?.text = OctoPrintManager.sharedInstance.apiVersion
+                cell.detailTextLabel?.text = OPManager.sharedInstance.apiVersion
                 cell.userInteractionEnabled = false
             return cell
             
             case (0, 1):
                 let cell = tableView.dequeueReusableCellWithIdentifier("BasicCell", forIndexPath: indexPath)
                 cell.textLabel?.text = "Server"
-                cell.detailTextLabel?.text = OctoPrintManager.sharedInstance.serverVersion
+                cell.detailTextLabel?.text = OPManager.sharedInstance.serverVersion
                 cell.userInteractionEnabled = false
                 return cell
             
             case (1, 0):
                 let cell = tableView.dequeueReusableCellWithIdentifier("BasicCell", forIndexPath: indexPath)
                 cell.textLabel?.text = "Printer"
-                cell.detailTextLabel?.text = OctoPrintManager.sharedInstance.printerStateText
+                cell.detailTextLabel?.text = OPManager.sharedInstance.printerStateText
                 cell.userInteractionEnabled = false
                 return cell
             
             case (2,_):
                 let cell = tableView.dequeueReusableCellWithIdentifier("TemperatureCell", forIndexPath: indexPath)
-            
-                var names:[String] = []
-                for (name, _) in OctoPrintManager.sharedInstance.temperatures {
-                    names.append(name)
-                }
-                
-                if let temperature = OctoPrintManager.sharedInstance.temperatures[names[indexPath.row]] {
-                    
-                    cell.textLabel?.text = names[indexPath.row]
-                    cell.detailTextLabel?.text = "\(temperature.actual.celciusString()) (\(temperature.target.celciusString()))"
-                }
-            
+                let tool = (indexPath.row == 0) ? OPManager.sharedInstance.bed : OPManager.sharedInstance.tools[indexPath.row - 1]
+
+                cell.textLabel?.text = tool.identifier
+                cell.detailTextLabel?.text = "\(tool.actualTemperature.celciusString()) (\(tool.targetTemperature.celciusString()))"
                 return cell
-            
-            
+        
             default:
                 let cell = tableView.dequeueReusableCellWithIdentifier("BasicCell", forIndexPath: indexPath)
                 cell.textLabel?.text = "Unknown cell!"
                 return cell
         }
-        
-   
 		
 	}
-    
-    
+
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         if indexPath.section == 2 {
             performSegueWithIdentifier("ShowTemperatureSelector", sender: self)
@@ -139,12 +124,7 @@ class OverviewTableViewController: UITableViewController {
             if let indexPath = tableView.indexPathForSelectedRow {
                 let temperatureSelector = segue.destinationViewController as! TemperatureSelectorTableViewController
                 
-                var names:[String] = []
-                for (name, _) in OctoPrintManager.sharedInstance.temperatures {
-                    names.append(name)
-                }
-                
-                temperatureSelector.toolName = names[indexPath.row]
+                temperatureSelector.heatedComponent = (indexPath.row == 0) ? OPManager.sharedInstance.bed : OPManager.sharedInstance.tools[indexPath.row - 1]
                 
             }
             

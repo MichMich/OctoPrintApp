@@ -57,6 +57,7 @@ class TemperaturePickerTableViewCell: UITableViewCell, UIPickerViewDataSource, U
     }
     
     func updateUI() {
+        
         generateTemperatures()
         pickerView.reloadComponent(0)
         if let index = temperatures.indexOf(temperature) {

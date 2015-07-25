@@ -32,12 +32,7 @@ struct StateFlags {
 
 enum ToolType {
     case Bed
-    case Extruder
-}
-
-enum OctoPrintAPIMethod {
-    case GET
-    case POST
+    case Tool
 }
 
 enum OctoPrintNotifications:String {
@@ -48,97 +43,14 @@ enum OctoPrintNotifications:String {
     case DidSetPrinterBed = "com.xonaymedia.OctoPrintApp.OctoPrintDidDidSetPrinterBed"
 }
 
-/*
- * OctoPrintAPITask
- * This object is responible for the api call and will be reused.
- */
-
-class OctoPrintAPITask: NSObject {
-    
-    static let alamofireManager = Alamofire.Manager(withHeaders: ["X-Api-Key": "6F72A90FCD4C4AF6A7F7836F787681B6"])
-    
-    var endPoint:String
-    private var successBlock:((JSON?)->())?
-    private var failureBlock:((NSError)->())?
-    private var parameters:[String: AnyObject]?
-    private var method:OctoPrintAPIMethod = .GET
-    
-    var lastSuccessfulRun:NSDate?
-    
-    private var repeatTimer:NSTimer?
-    private var repeatInterval:NSTimeInterval?
-    
-    init (endPoint:String) {
-        self.endPoint = endPoint
-    }
-    
-    func fire() -> OctoPrintAPITask {
-        executeCall()
-        return self
-    }
-    
-    func method(method:OctoPrintAPIMethod) -> OctoPrintAPITask  {
-        self.method = method
-        return self
-    }
-    
-    func parameters(parameters:[String: AnyObject]?) -> OctoPrintAPITask {
-        self.parameters = parameters
-        return self
-    }
-    
-    func onSuccess(successBlock: ((JSON?)->())?) -> OctoPrintAPITask {
-        self.successBlock = successBlock
-        return self
-    }
-    
-    func onFailure(failureBlock: ((NSError)->())?) -> OctoPrintAPITask {
-        self.failureBlock = failureBlock
-        return self
-    }
-    
-    func autoRepeat(repeatInterval:NSTimeInterval?) -> OctoPrintAPITask {
-        self.repeatInterval = repeatInterval
-        self.scheduleTimer()
-        return self
-    }
-    
-    private func scheduleTimer() {
-        repeatTimer?.invalidate()
-        repeatTimer = nil
-        if let repeatInterval = repeatInterval {
-            repeatTimer = NSTimer.scheduledTimerWithTimeInterval(repeatInterval, target: self, selector: Selector("fire"), userInfo: nil, repeats: false)
-        }
-    }
-    
-    private func executeCall() {
-        let endPoint = "http://192.168.0.30/api/\(self.endPoint)"
-        
-        OctoPrintAPITask.alamofireManager.request((self.method == .GET) ? .GET : .POST, endPoint, parameters: parameters, encoding: .JSON).responseJSON {
-            (request, response, jsonData, error) -> Void in
-            if let error = error {
-                print(error)
-                print(endPoint)
-                print(self.parameters)
-                self.failureBlock?(error)
-                self.scheduleTimer()
-            } else {
-                //print(jsonData)
-                let json = JSON(jsonData ?? [])
-                self.lastSuccessfulRun = NSDate()
-                self.successBlock?(json)
-                self.scheduleTimer()
-            }
-        }
-    }
-}
 
 
 
 
 
-class OctoPrintManager {
-    static let sharedInstance = OctoPrintManager()
+
+class OPManager {
+    static let sharedInstance = OPManager()
     
     // update info
     var updateTimeStamp:NSDate?
@@ -150,13 +62,13 @@ class OctoPrintManager {
     // printer
     var printerStateText:String = "Unknown"
     var printerStateFlags:StateFlags = StateFlags(operational: false, paused: false, printing: false, sdReady: false, error: false, ready: false, closedOrError: false)
-    var temperatures:[String:ToolTemperature] = [:]
+
+    let bed:OPBed = OPBed(identifier: "bed")
+    let tools = OPToolArray()
     
     private enum tasks {
-        static var updateVersion = OctoPrintAPITask(endPoint: "version")
-        static var updatePrinter = OctoPrintAPITask(endPoint: "printer")
-        static var setPrinterTool = OctoPrintAPITask(endPoint: "printer/tool")
-        static var setPrinterBed = OctoPrintAPITask(endPoint: "printer/bed")
+        static var updateVersion = OPAPITask(endPoint: "version")
+        static var updatePrinter = OPAPITask(endPoint: "printer")
     }
     
     func updateVersion(autoUpdate interval: NSTimeInterval? = nil) {
@@ -196,10 +108,19 @@ class OctoPrintManager {
                     closedOrError: json["state"]["flags"]["closedOrError"].bool ?? false)
                 
                 for (key, subJson) in json["temperature"] {
-                    self.temperatures[key] = ToolTemperature(
-                        actual: subJson["actual"].float ?? 0,
-                        target: subJson["target"].float ?? 0,
-                        offset: subJson["offset"].float ?? 0)
+                    
+                    let heatedComponent:OPHeatedComponent
+                    
+                    if key == "bed" {
+                        heatedComponent = self.bed
+                    } else {
+                        heatedComponent = self.tools[key]
+                    }
+                    
+                    heatedComponent.actualTemperature = subJson["actual"].float ?? 0
+                    heatedComponent.targetTemperature = subJson["target"].float ?? 0
+                    heatedComponent.temperatureOffset = subJson["offset"].float ?? 0
+                    
                 }
                 
                 self.broadcastNotification(.DidUpdate)
@@ -210,46 +131,8 @@ class OctoPrintManager {
         }).autoRepeat(interval).fire()
     }
     
-    func setTargetTemperature(targetTemperature:Float, forTool toolName:String) {
-        
-        print("Target for \(toolName): \(targetTemperature)")
-        
-        if self.toolTypeForTemperatureIdentifier(toolName) == .Extruder {
-        
-            tasks.setPrinterTool.parameters([
-                "command": "target",
-                "targets": [
-                    toolName: targetTemperature
-                ]
-            ]).method(.POST).onSuccess({ (json)->() in
-                
-                self.broadcastNotification(.DidSetPrinterTool)
-                
-            }).fire()
-
-        } else {
-        
-            tasks.setPrinterBed.parameters([
-                "command": "target",
-                "target": targetTemperature
-            ]).method(.POST).onSuccess({ (json)->() in
-                
-                self.broadcastNotification(.DidSetPrinterBed)
-                
-            }).fire()
-            
-        }
-
-    }
-   
-    func toolTypeForTemperatureIdentifier(identifier:String) ->ToolType {
-        return (identifier.lowercaseString == "bed") ? .Bed : .Extruder
-    }
-    
     // Private methods
-    
     private func broadcastNotification(notification:OctoPrintNotifications) {
-        //print(notification.rawValue)
         NSNotificationCenter.defaultCenter().postNotificationKey(notification, object: self)
     }
 }
