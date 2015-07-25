@@ -191,7 +191,7 @@ class OctoPrintManager {
                 for (key, subJson) in json["temperature"] {
                     self.temperatures[key] = ToolTemperature(
                         actual: subJson["actual"].float ?? 0,
-                        target: 99, //subJson["target"].float ?? 0,
+                        target: subJson["target"].float ?? 0,
                         offset: subJson["offset"].float ?? 0)
                 }
                 
