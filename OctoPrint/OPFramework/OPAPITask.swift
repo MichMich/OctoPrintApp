@@ -71,23 +71,29 @@ class OPAPITask: NSObject {
     private func executeCall() {
         let endPoint = "http://192.168.0.30/api/\(self.endPoint)"
         
-        //print(endPoint)
+        print(endPoint)
         
-        OPAPITask.alamofireManager.request(method, endPoint, parameters: parameters, encoding: .JSON).responseJSON {
-            (request, response, jsonData, error) -> Void in
-            if let error = error {
-                print(error)
-                print(endPoint)
-                print(self.parameters)
-                self.failureBlock?(error)
-                self.scheduleTimer()
-            } else {
-                //print(jsonData)
-                let json = JSON(jsonData ?? [])
-                self.lastSuccessfulRun = NSDate()
-                self.successBlock?(json)
-                self.scheduleTimer()
+        var message:String?
+        
+        OPAPITask.alamofireManager
+            .request(method, endPoint, parameters: parameters, encoding: .JSON)
+            .responseString { request, response, string, error in
+                message = string
             }
-        }
+            .responseJSON {
+                (request, response, jsonData, error) -> Void in
+                if let error = error {
+                    //print(error)
+                    print(message)
+                    self.failureBlock?(error)
+                    self.scheduleTimer()
+                } else {
+                    //print(jsonData)
+                    let json = JSON(jsonData ?? [])
+                    self.lastSuccessfulRun = NSDate()
+                    self.successBlock?(json)
+                    self.scheduleTimer()
+                }
+            }
     }
 }

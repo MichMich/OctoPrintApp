@@ -16,12 +16,16 @@ class OverviewTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "updateUI", key: .DidUpdate, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "updateUI", key: .DidUpdatePrinter, object: OPManager.sharedInstance)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "updateUI", key: .DidUpdateVersion, object: OPManager.sharedInstance)
         
         title = "OctoPrint"
         
-        OPManager.sharedInstance.updateVersion(autoUpdate:5)
+        OPManager.sharedInstance.updateVersion()
         OPManager.sharedInstance.updatePrinter(autoUpdate:1)
+        OPManager.sharedInstance.updateSettings()
+        
+        updateUI()
     }
     
     

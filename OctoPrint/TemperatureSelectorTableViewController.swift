@@ -10,24 +10,13 @@ import UIKit
 
 class TemperatureSelectorTableViewController: UITableViewController, TemperaturePickerTableViewCellDelegate {
 
-    struct Preset {
-        let name:String
-        let extruderTemperature:Int
-        let bedTemperature:Int
-    }
+    
     
     var heatedComponent:OPHeatedComponent!
     
     
     let sections = ["Current","Manual","Presets"]
-    let presets = [
-        Preset(name: "ABS", extruderTemperature: 240, bedTemperature: 110),
-        Preset(name: "HIPS", extruderTemperature: 240, bedTemperature: 100),
-        Preset(name: "PLA", extruderTemperature: 200, bedTemperature: 65),
-        Preset(name: "XTCopolyester", extruderTemperature: 240, bedTemperature: 60)
-    ]
 
-  
 
     
     
@@ -35,9 +24,10 @@ class TemperatureSelectorTableViewController: UITableViewController, Temperature
         super.viewDidLoad()
 
         title = heatedComponent.identifier
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "updateUI", key: .DidUpdatePrinter, object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "updateUI", key: .DidUpdatePrinter, object: nil)
 
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "updateUI", key: .DidUpdateComponent, object: heatedComponent)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "updateUI", key: .DidUpdateSettings, object: heatedComponent)
+        updateUI()
     }
     
    
@@ -61,7 +51,7 @@ class TemperatureSelectorTableViewController: UITableViewController, Temperature
             case 1:
                 return 1
             case 2:
-                return presets.count
+                return OPManager.sharedInstance.temperaturePresets.count
             default:
                 return 0
         }
@@ -116,7 +106,7 @@ class TemperatureSelectorTableViewController: UITableViewController, Temperature
                 let cell = tableView.dequeueReusableCellWithIdentifier("BasicCell", forIndexPath: indexPath)
                 cell.userInteractionEnabled = true
                 
-                let preset = presets[indexPath.row]
+                let preset = OPManager.sharedInstance.temperaturePresets[indexPath.row]
                 cell.textLabel?.text = preset.name
                 
                 if heatedComponent.componentType == .Bed {
@@ -140,7 +130,7 @@ class TemperatureSelectorTableViewController: UITableViewController, Temperature
 
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         if indexPath.section == 2 {
-            let preset = presets[indexPath.row]
+            let preset = OPManager.sharedInstance.temperaturePresets[indexPath.row]
             let newTargetTemperature:Int
             if heatedComponent.componentType == .Bed {
                 newTargetTemperature =  preset.bedTemperature

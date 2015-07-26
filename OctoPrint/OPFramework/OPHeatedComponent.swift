@@ -22,24 +22,34 @@ class OPHeatedComponent : OPComponent {
         }
     }
     
-    var updatedAt:NSDate = NSDate()
+    var updatedAt:NSDate = NSDate() {
+        didSet {
+            OPManager.notificationCenter.postNotificationKey(.DidUpdateComponent, object: self)
+        }
+    }
     
     
     var actualTemperature:Float = 0 {
         didSet {
-            updatedAt = NSDate()
+            if actualTemperature != oldValue {
+                updatedAt = NSDate()
+            }
         }
     }
     
     var targetTemperature:Float = 0 {
         didSet {
-            updatedAt = NSDate()
+            if targetTemperature != oldValue {
+                updatedAt = NSDate()
+            }
         }
     }
     
     var temperatureOffset:Float = 0 {
         didSet {
-            updatedAt = NSDate()
+            if temperatureOffset != oldValue {
+                updatedAt = NSDate()
+            }
         }
     }
     
