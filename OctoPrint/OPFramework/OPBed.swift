@@ -28,7 +28,7 @@ class OPBed : OPHeatedComponent {
             "command": "target",
             "target": targetTemperature
         ]).method(.POST).onSuccess({ (json)->() in
-                //self.broadcastNotification(.DidSetPrinterBed)
+                OPManager.notificationCenter.postNotificationKey(.DidSetPrinterBed, object: self)
         }).fire()
     }
 

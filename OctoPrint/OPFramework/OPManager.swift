@@ -47,8 +47,8 @@ enum OPNotification:String {
     case DidUpdateComponent = "com.xonaymedia.OctoPrintApp.OctoPrintDidUpdateComponent"
     case DidUpdateSettings = "com.xonaymedia.OctoPrintApp.OctoPrintDidUpdateSettings"
     
-//    case DidSetPrinterTool = "com.xonaymedia.OctoPrintApp.OctoPrintDidDidSetPrinterTool"
-//    case DidSetPrinterBed = "com.xonaymedia.OctoPrintApp.OctoPrintDidDidSetPrinterBed"
+    case DidSetPrinterTool = "com.xonaymedia.OctoPrintApp.OctoPrintDidDidSetPrinterTool"
+    case DidSetPrinterBed = "com.xonaymedia.OctoPrintApp.OctoPrintDidDidSetPrinterBed"
 }
 
 

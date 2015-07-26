@@ -30,7 +30,7 @@ class OPTool : OPHeatedComponent {
             ]
         ]).method(.POST).onSuccess({ (json)->() in
             
-            // self.broadcastNotification(.DidSetPrinterTool)
+            OPManager.notificationCenter.postNotificationKey(.DidSetPrinterTool, object: self)
             
         }).fire()
         

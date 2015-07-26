@@ -71,8 +71,6 @@ class OPAPITask: NSObject {
     private func executeCall() {
         let endPoint = "http://192.168.0.30/api/\(self.endPoint)"
         
-        print(endPoint)
-        
         var message:String?
         
         OPAPITask.alamofireManager
