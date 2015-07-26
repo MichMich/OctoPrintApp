@@ -36,6 +36,21 @@ class OPTool : OPHeatedComponent {
         
     }
     
+    override func setTemperatureOffset(targetTemperature:Float) {
+        
+        OPTool.apiTask.parameters([
+            "command": "offset",
+            "offsets": [
+                self.identifier: targetTemperature
+            ]
+            ]).method(.POST).onSuccess({ (json)->() in
+                
+                OPManager.notificationCenter.postNotificationKey(.DidSetPrinterTool, object: self)
+                
+            }).fire()
+        
+    }
+    
 }
 
 class OPToolArray {

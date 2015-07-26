@@ -62,6 +62,12 @@ class OPHeatedComponent : OPComponent {
     func setTargetTemperature(targetTemperature:Float) {
         assert(false, "OPHeatedComponent should not be used directly.")
     }
+    
+    func setTemperatureOffset(targetTemperature:Float) {
+        assert(false, "OPHeatedComponent should not be used directly.")
+    }
+    
+
 }
 
 

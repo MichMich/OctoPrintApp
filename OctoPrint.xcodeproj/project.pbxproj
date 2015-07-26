@@ -27,6 +27,8 @@
 		4CB711E11B63E27F001A01C9 /* OPHeatedComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CB711E01B63E27F001A01C9 /* OPHeatedComponent.swift */; };
 		4CB711E31B63E425001A01C9 /* OPBed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CB711E21B63E425001A01C9 /* OPBed.swift */; };
 		4CB711E51B640672001A01C9 /* OPTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CB711E41B640672001A01C9 /* OPTool.swift */; };
+		4CBE55601B6518990089CE7C /* IPCameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CBE555F1B6518990089CE7C /* IPCameraView.swift */; };
+		4CBE556A1B651A070089CE7C /* ControlViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CBE55691B651A070089CE7C /* ControlViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -156,6 +158,8 @@
 		4CB711E01B63E27F001A01C9 /* OPHeatedComponent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OPHeatedComponent.swift; sourceTree = "<group>"; };
 		4CB711E21B63E425001A01C9 /* OPBed.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OPBed.swift; sourceTree = "<group>"; };
 		4CB711E41B640672001A01C9 /* OPTool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OPTool.swift; sourceTree = "<group>"; };
+		4CBE555F1B6518990089CE7C /* IPCameraView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IPCameraView.swift; sourceTree = "<group>"; };
+		4CBE55691B651A070089CE7C /* ControlViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ControlViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -216,10 +220,12 @@
 				4CADF1831B5FCF0E0090AFEC /* Assets.xcassets */,
 				4CADF1851B5FCF0E0090AFEC /* LaunchScreen.storyboard */,
 				4CADF1881B5FCF0E0090AFEC /* Info.plist */,
-				4CB711D51B63E00F001A01C9 /* OP */,
+				4CB711E61B641CDC001A01C9 /* OPFramework */,
 				4CB0CCB91B61118200673CC9 /* TemperatureSelectorTableViewController.swift */,
 				4CB0CCBB1B611AFB00673CC9 /* TemperaturePickerTableViewCell.swift */,
 				4CB0CCBD1B61269900673CC9 /* Helpers.swift */,
+				4CBE555F1B6518990089CE7C /* IPCameraView.swift */,
+				4CBE55691B651A070089CE7C /* ControlViewController.swift */,
 			);
 			path = OctoPrint;
 			sourceTree = "<group>";
@@ -262,14 +268,6 @@
 				4CADF1EC1B5FEA250090AFEC /* SwiftyJSON OSX Tests.xctest */,
 			);
 			name = Products;
-			sourceTree = "<group>";
-		};
-		4CB711D51B63E00F001A01C9 /* OP */ = {
-			isa = PBXGroup;
-			children = (
-				4CB711E61B641CDC001A01C9 /* OPFramework */,
-			);
-			name = OP;
 			sourceTree = "<group>";
 		};
 		4CB711E61B641CDC001A01C9 /* OPFramework */ = {
@@ -489,11 +487,13 @@
 			files = (
 				4CB711E51B640672001A01C9 /* OPTool.swift in Sources */,
 				4CADF17F1B5FCF0E0090AFEC /* OverviewTableViewController.swift in Sources */,
+				4CBE55601B6518990089CE7C /* IPCameraView.swift in Sources */,
 				4CB711DF1B63E21A001A01C9 /* OPComponent.swift in Sources */,
 				4CB0CCBE1B61269900673CC9 /* Helpers.swift in Sources */,
 				4CB0CCBC1B611AFB00673CC9 /* TemperaturePickerTableViewCell.swift in Sources */,
 				4CB711E31B63E425001A01C9 /* OPBed.swift in Sources */,
 				4CADF17D1B5FCF0E0090AFEC /* AppDelegate.swift in Sources */,
+				4CBE556A1B651A070089CE7C /* ControlViewController.swift in Sources */,
 				4CADF1BF1B5FD16C0090AFEC /* OPManager.swift in Sources */,
 				4CB711DD1B63E05E001A01C9 /* OPAPITask.swift in Sources */,
 				4CB0CCBA1B61118200673CC9 /* TemperatureSelectorTableViewController.swift in Sources */,

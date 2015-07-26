@@ -31,5 +31,14 @@ class OPBed : OPHeatedComponent {
                 OPManager.notificationCenter.postNotificationKey(.DidSetPrinterBed, object: self)
         }).fire()
     }
+    
+    override func setTemperatureOffset(targetTemperature:Float) {
+        OPBed.apiTask.parameters([
+            "command": "offset",
+            "offset": targetTemperature
+        ]).method(.POST).onSuccess({ (json)->() in
+            OPManager.notificationCenter.postNotificationKey(.DidSetPrinterBed, object: self)
+        }).fire()
+    }
 
 }

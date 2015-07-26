@@ -13,9 +13,11 @@ class TemperatureSelectorTableViewController: UITableViewController, Temperature
     
     
     var heatedComponent:OPHeatedComponent!
+    var targetTemperaturePickerCell:TemperaturePickerTableViewCell?
+    var temperatureOffsetPickerCell:TemperaturePickerTableViewCell?
     
     
-    let sections = ["Current","Manual","Presets"]
+    let sections = ["Current","Set Target","Presets", "Set Offset"]
 
 
     
@@ -47,11 +49,13 @@ class TemperatureSelectorTableViewController: UITableViewController, Temperature
 
         switch section {
             case 0:
-                return 2
+                return 3
             case 1:
                 return 1
             case 2:
                 return OPManager.sharedInstance.temperaturePresets.count
+            case 3:
+                return 1
             default:
                 return 0
         }
@@ -63,7 +67,7 @@ class TemperatureSelectorTableViewController: UITableViewController, Temperature
     }
 
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        if indexPath == NSIndexPath(forRow: 0, inSection: 1) {
+        if indexPath == NSIndexPath(forRow: 0, inSection: 1) || indexPath == NSIndexPath(forRow: 0, inSection: 3)  {
             return 100
         }
         
@@ -84,7 +88,6 @@ class TemperatureSelectorTableViewController: UITableViewController, Temperature
                 cell.userInteractionEnabled = false
                 return cell
             
-            
             case (0, 1):
                 let cell = tableView.dequeueReusableCellWithIdentifier("BasicCell", forIndexPath: indexPath)
                 cell.textLabel?.text = "Target"
@@ -92,6 +95,12 @@ class TemperatureSelectorTableViewController: UITableViewController, Temperature
                 cell.userInteractionEnabled = false
                 return cell
 
+            case (0, 2):
+                let cell = tableView.dequeueReusableCellWithIdentifier("BasicCell", forIndexPath: indexPath)
+                cell.textLabel?.text = "Offset"
+                cell.detailTextLabel?.text = heatedComponent.temperatureOffset.celciusString()
+                cell.userInteractionEnabled = false
+                return cell
             
             case (1,_):
                  let cell = tableView.dequeueReusableCellWithIdentifier("TemperaturePickerCell", forIndexPath: indexPath) as! TemperaturePickerTableViewCell
@@ -99,6 +108,8 @@ class TemperatureSelectorTableViewController: UITableViewController, Temperature
                  cell.maxTemp = 300
                  cell.stepSize = 5
                  cell.temperature = heatedComponent.targetTemperature
+                 
+                 targetTemperaturePickerCell = cell
             
                 return cell
                  
@@ -116,6 +127,20 @@ class TemperatureSelectorTableViewController: UITableViewController, Temperature
                 }
             
                 return cell
+            
+            
+            case (3,_):
+                let cell = tableView.dequeueReusableCellWithIdentifier("TemperaturePickerCell", forIndexPath: indexPath) as! TemperaturePickerTableViewCell
+                cell.delegate = self
+                cell.minTemp = -50
+                cell.maxTemp = 50
+                cell.stepSize = 1
+                cell.temperature = heatedComponent.temperatureOffset
+                
+                temperatureOffsetPickerCell = cell
+                
+                return cell
+            
             default:
                 
                     let cell = tableView.dequeueReusableCellWithIdentifier("BasicCell", forIndexPath: indexPath)
@@ -138,7 +163,7 @@ class TemperatureSelectorTableViewController: UITableViewController, Temperature
                 newTargetTemperature =  preset.extruderTemperature
             }
             
-            changeTargetTemperatureTo(Float(newTargetTemperature))
+            setTargetTemperature(Float(newTargetTemperature))
         }
         
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
@@ -146,16 +171,24 @@ class TemperatureSelectorTableViewController: UITableViewController, Temperature
     
     
    
-    func changeTargetTemperatureTo(target:Float) {
+    func setTargetTemperature(target:Float) {
         heatedComponent.setTargetTemperature(target)
     }
+    
+    
 
 }
 
 // TemperaturePickerTableViewCellDelegate
 extension TemperatureSelectorTableViewController {
     func temperaturePickerCellDidUpdate(temperaturePickerCell: TemperaturePickerTableViewCell) {
-        self.changeTargetTemperatureTo(temperaturePickerCell.temperature)
+        
+        if temperaturePickerCell == targetTemperaturePickerCell {
+            self.setTargetTemperature(temperaturePickerCell.temperature)
+        } else if temperaturePickerCell == temperatureOffsetPickerCell {
+            heatedComponent.setTemperatureOffset(temperaturePickerCell.temperature)
+        }
+        
     }
 }
 
