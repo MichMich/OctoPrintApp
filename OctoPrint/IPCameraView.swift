@@ -80,9 +80,9 @@ class IPCameraView: UIView, NSURLSessionDataDelegate {
             
             //NSLog( "Did receive data" )
             
-            //var endRange:NSRange = self.receivedData.rangeOfData(self.endMarkerData, options: nil, range: NSMakeRange(0, self.receivedData.length))
             
             let endRange:NSRange = self.receivedData.rangeOfData(self.endMarkerData, options: NSDataSearchOptions.Backwards, range: NSMakeRange(0, self.receivedData.length))
+
          
             
             
