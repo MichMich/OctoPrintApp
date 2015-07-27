@@ -7,6 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4C80C2C31B66729500ADB99E /* temperature@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C80C2BA1B66729500ADB99E /* temperature@3x.png */; };
+		4C80C2C41B66729500ADB99E /* temperature@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C80C2BB1B66729500ADB99E /* temperature@2x.png */; };
+		4C80C2C51B66729500ADB99E /* temperature.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C80C2BC1B66729500ADB99E /* temperature.png */; };
+		4C80C2C91B66729500ADB99E /* control@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C80C2C01B66729500ADB99E /* control@3x.png */; };
+		4C80C2CA1B66729500ADB99E /* control@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C80C2C11B66729500ADB99E /* control@2x.png */; };
+		4C80C2CB1B66729500ADB99E /* control.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C80C2C21B66729500ADB99E /* control.png */; };
+		4C80C2CD1B6672CE00ADB99E /* TemperatureTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C80C2CC1B6672CE00ADB99E /* TemperatureTableViewController.swift */; };
+		4C80C2D11B66768E00ADB99E /* info@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C80C2CE1B66768E00ADB99E /* info@3x.png */; };
+		4C80C2D21B66768E00ADB99E /* info@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C80C2CF1B66768E00ADB99E /* info@2x.png */; };
+		4C80C2D31B66768E00ADB99E /* info.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C80C2D01B66768E00ADB99E /* info.png */; };
 		4CADF17D1B5FCF0E0090AFEC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CADF17C1B5FCF0E0090AFEC /* AppDelegate.swift */; };
 		4CADF17F1B5FCF0E0090AFEC /* OverviewTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CADF17E1B5FCF0E0090AFEC /* OverviewTableViewController.swift */; };
 		4CADF1841B5FCF0E0090AFEC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4CADF1831B5FCF0E0090AFEC /* Assets.xcassets */; };
@@ -134,6 +144,16 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		4C80C2BA1B66729500ADB99E /* temperature@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "temperature@3x.png"; path = "images/temperature@3x.png"; sourceTree = "<group>"; };
+		4C80C2BB1B66729500ADB99E /* temperature@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "temperature@2x.png"; path = "images/temperature@2x.png"; sourceTree = "<group>"; };
+		4C80C2BC1B66729500ADB99E /* temperature.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = temperature.png; path = images/temperature.png; sourceTree = "<group>"; };
+		4C80C2C01B66729500ADB99E /* control@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "control@3x.png"; path = "images/control@3x.png"; sourceTree = "<group>"; };
+		4C80C2C11B66729500ADB99E /* control@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "control@2x.png"; path = "images/control@2x.png"; sourceTree = "<group>"; };
+		4C80C2C21B66729500ADB99E /* control.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = control.png; path = images/control.png; sourceTree = "<group>"; };
+		4C80C2CC1B6672CE00ADB99E /* TemperatureTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TemperatureTableViewController.swift; sourceTree = "<group>"; };
+		4C80C2CE1B66768E00ADB99E /* info@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "info@3x.png"; path = "images/info@3x.png"; sourceTree = "<group>"; };
+		4C80C2CF1B66768E00ADB99E /* info@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "info@2x.png"; path = "images/info@2x.png"; sourceTree = "<group>"; };
+		4C80C2D01B66768E00ADB99E /* info.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = info.png; path = images/info.png; sourceTree = "<group>"; };
 		4CADF1791B5FCF0E0090AFEC /* OctoPrint.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OctoPrint.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4CADF17C1B5FCF0E0090AFEC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4CADF17E1B5FCF0E0090AFEC /* OverviewTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverviewTableViewController.swift; sourceTree = "<group>"; };
@@ -189,6 +209,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4C80C2B31B66728400ADB99E /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				4C80C2CE1B66768E00ADB99E /* info@3x.png */,
+				4C80C2CF1B66768E00ADB99E /* info@2x.png */,
+				4C80C2D01B66768E00ADB99E /* info.png */,
+				4C80C2BA1B66729500ADB99E /* temperature@3x.png */,
+				4C80C2BB1B66729500ADB99E /* temperature@2x.png */,
+				4C80C2BC1B66729500ADB99E /* temperature.png */,
+				4C80C2C01B66729500ADB99E /* control@3x.png */,
+				4C80C2C11B66729500ADB99E /* control@2x.png */,
+				4C80C2C21B66729500ADB99E /* control.png */,
+			);
+			name = Images;
+			sourceTree = "<group>";
+		};
 		4CADF1701B5FCF0E0090AFEC = {
 			isa = PBXGroup;
 			children = (
@@ -214,18 +250,20 @@
 		4CADF17B1B5FCF0E0090AFEC /* OctoPrint */ = {
 			isa = PBXGroup;
 			children = (
+				4C80C2B31B66728400ADB99E /* Images */,
 				4CADF17C1B5FCF0E0090AFEC /* AppDelegate.swift */,
-				4CADF17E1B5FCF0E0090AFEC /* OverviewTableViewController.swift */,
 				4CB0CCB61B610C1200673CC9 /* Main.storyboard */,
 				4CADF1831B5FCF0E0090AFEC /* Assets.xcassets */,
 				4CADF1851B5FCF0E0090AFEC /* LaunchScreen.storyboard */,
 				4CADF1881B5FCF0E0090AFEC /* Info.plist */,
 				4CB711E61B641CDC001A01C9 /* OPFramework */,
+				4CADF17E1B5FCF0E0090AFEC /* OverviewTableViewController.swift */,
+				4C80C2CC1B6672CE00ADB99E /* TemperatureTableViewController.swift */,
+				4CBE55691B651A070089CE7C /* ControlViewController.swift */,
 				4CB0CCB91B61118200673CC9 /* TemperatureSelectorTableViewController.swift */,
 				4CB0CCBB1B611AFB00673CC9 /* TemperaturePickerTableViewCell.swift */,
 				4CB0CCBD1B61269900673CC9 /* Helpers.swift */,
 				4CBE555F1B6518990089CE7C /* IPCameraView.swift */,
-				4CBE55691B651A070089CE7C /* ControlViewController.swift */,
 			);
 			path = OctoPrint;
 			sourceTree = "<group>";
@@ -460,7 +498,16 @@
 			files = (
 				4CB0CCB81B610C1200673CC9 /* Main.storyboard in Resources */,
 				4CADF1871B5FCF0E0090AFEC /* LaunchScreen.storyboard in Resources */,
+				4C80C2D21B66768E00ADB99E /* info@2x.png in Resources */,
+				4C80C2CB1B66729500ADB99E /* control.png in Resources */,
+				4C80C2CA1B66729500ADB99E /* control@2x.png in Resources */,
+				4C80C2C31B66729500ADB99E /* temperature@3x.png in Resources */,
+				4C80C2D11B66768E00ADB99E /* info@3x.png in Resources */,
 				4CADF1841B5FCF0E0090AFEC /* Assets.xcassets in Resources */,
+				4C80C2C91B66729500ADB99E /* control@3x.png in Resources */,
+				4C80C2C51B66729500ADB99E /* temperature.png in Resources */,
+				4C80C2C41B66729500ADB99E /* temperature@2x.png in Resources */,
+				4C80C2D31B66768E00ADB99E /* info.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -487,6 +534,7 @@
 			files = (
 				4CB711E51B640672001A01C9 /* OPTool.swift in Sources */,
 				4CADF17F1B5FCF0E0090AFEC /* OverviewTableViewController.swift in Sources */,
+				4C80C2CD1B6672CE00ADB99E /* TemperatureTableViewController.swift in Sources */,
 				4CBE55601B6518990089CE7C /* IPCameraView.swift in Sources */,
 				4CB711DF1B63E21A001A01C9 /* OPComponent.swift in Sources */,
 				4CB0CCBE1B61269900673CC9 /* Helpers.swift in Sources */,

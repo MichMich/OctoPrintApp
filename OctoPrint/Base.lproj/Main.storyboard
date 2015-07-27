@@ -58,10 +58,10 @@
             </objects>
             <point key="canvasLocation" x="3731" y="270"/>
         </scene>
-        <!--Overview Table View Controller-->
+        <!--Temperature Table View Controller-->
         <scene sceneID="F1g-UZ-GUs">
             <objects>
-                <tableViewController id="AHK-gw-8AV" customClass="OverviewTableViewController" customModule="OctoPrint" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="AHK-gw-8AV" customClass="TemperatureTableViewController" customModule="OctoPrint" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="1yO-Rb-Pbm">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -131,11 +131,11 @@
             </objects>
             <point key="canvasLocation" x="2993" y="270"/>
         </scene>
-        <!--Item-->
+        <!--Temperature-->
         <scene sceneID="T1g-qU-Bu0">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Z2P-w5-bfV" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="jFE-2c-8j5"/>
+                    <tabBarItem key="tabBarItem" title="Temperature" image="temperature.png" id="jFE-2c-8j5"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="xNU-LQ-Phf">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -150,7 +150,52 @@
             </objects>
             <point key="canvasLocation" x="2181" y="270"/>
         </scene>
-        <!--Item-->
+        <!--Overview Table View Controller-->
+        <scene sceneID="TPU-Fv-MeS">
+            <objects>
+                <tableViewController id="pwq-L7-A59" customClass="OverviewTableViewController" customModule="OctoPrint" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="Sew-Eh-7Xm">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="BasicCell" textLabel="Jh8-JA-Kdf" detailTextLabel="waR-Ip-znR" style="IBUITableViewCellStyleValue1" id="k7O-Pm-wiH">
+                                <rect key="frame" x="0.0" y="114" width="600" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="k7O-Pm-wiH" id="jgJ-7g-ANB">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="BasicCell" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Jh8-JA-Kdf">
+                                            <rect key="frame" x="15" y="12" width="67" height="20"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Detail" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="waR-Ip-znR">
+                                            <rect key="frame" x="543" y="12" width="42" height="20"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                            <color key="textColor" red="0.55686274509803924" green="0.55686274509803924" blue="0.57647058823529407" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="pwq-L7-A59" id="vy5-mo-NZZ"/>
+                            <outlet property="delegate" destination="pwq-L7-A59" id="DyI-e0-h2Y"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="jzQ-32-hNn"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="XAy-qs-z71" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2993" y="-409"/>
+        </scene>
+        <!--Control View Controller-->
         <scene sceneID="7VG-iL-WzJ">
             <objects>
                 <viewController id="sk0-Qj-rEF" customClass="ControlViewController" customModule="OctoPrint" customModuleProvider="target" sceneMemberID="viewController">
@@ -161,13 +206,25 @@
                     <view key="view" contentMode="scaleToFill" id="bbV-hn-LjI">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Work in progress! :)" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oiX-2k-FOo">
+                                <rect key="frame" x="226" y="289" width="149" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="oiX-2k-FOo" firstAttribute="centerY" secondItem="bbV-hn-LjI" secondAttribute="centerY" id="fes-GF-u72"/>
+                            <constraint firstItem="oiX-2k-FOo" firstAttribute="centerX" secondItem="bbV-hn-LjI" secondAttribute="centerX" id="pH4-1Q-707"/>
+                        </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="fsw-hZ-vNU"/>
+                    <navigationItem key="navigationItem" id="sqH-d0-lnZ"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8qY-1V-GAh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2181" y="1081"/>
+            <point key="canvasLocation" x="2993" y="1081"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="pvv-Ud-Hr6">
@@ -180,13 +237,57 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </tabBar>
                     <connections>
+                        <segue destination="lUx-5l-G6S" kind="relationship" relationship="viewControllers" id="H80-64-V9x"/>
                         <segue destination="Z2P-w5-bfV" kind="relationship" relationship="viewControllers" id="xz7-Gn-0BI"/>
-                        <segue destination="sk0-Qj-rEF" kind="relationship" relationship="viewControllers" id="gAi-du-ecb"/>
+                        <segue destination="9XI-DL-yGp" kind="relationship" relationship="viewControllers" id="gAi-du-ecb"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gnl-As-vLH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1369" y="270"/>
         </scene>
+        <!--Info-->
+        <scene sceneID="wAW-VP-FJM">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="lUx-5l-G6S" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Info" image="info.png" id="Zs5-bS-NE9"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="cpr-hl-7k6">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="pwq-L7-A59" kind="relationship" relationship="rootViewController" id="8Xg-7D-kmO"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vfX-fp-nYL" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2181" y="-409"/>
+        </scene>
+        <!--Control-->
+        <scene sceneID="QpY-VB-ZdO">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="9XI-DL-yGp" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Control" image="control.png" id="fsw-hZ-vNU"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="hLj-fi-6SO">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="sk0-Qj-rEF" kind="relationship" relationship="rootViewController" id="9jj-xn-4Y7"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="JEz-lZ-kpW" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2181" y="1081"/>
+        </scene>
     </scenes>
+    <resources>
+        <image name="control.png" width="20" height="19"/>
+        <image name="info.png" width="22" height="22"/>
+        <image name="temperature.png" width="14" height="26"/>
+    </resources>
 </document>

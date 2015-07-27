@@ -11,15 +11,15 @@ import UIKit
 class OverviewTableViewController: UITableViewController {
 
     
-    let sections = ["Version", "State", "Temperatures"]
+    let sections = ["Version", "State"]
     
     override func viewDidLoad() {
+        title = "Info"
+        
         super.viewDidLoad()
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "updateUI", key: .DidUpdatePrinter, object: OPManager.sharedInstance)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "updateUI", key: .DidUpdateVersion, object: OPManager.sharedInstance)
-        
-        title = "OctoPrint"
         
         OPManager.sharedInstance.updateVersion()
         OPManager.sharedInstance.updatePrinter(autoUpdate:1)
@@ -48,8 +48,6 @@ class OverviewTableViewController: UITableViewController {
             case 1:
                 return 1
             
-            case 2:
-                return OPManager.sharedInstance.tools.count + 1
             
             default:
                 return 0
@@ -75,7 +73,6 @@ class OverviewTableViewController: UITableViewController {
 	override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
         
-        
         let shortPath = (indexPath.section, indexPath.row)
         switch shortPath {
             case (0, 0):
@@ -98,14 +95,6 @@ class OverviewTableViewController: UITableViewController {
                 cell.detailTextLabel?.text = OPManager.sharedInstance.printerStateText
                 cell.userInteractionEnabled = false
                 return cell
-            
-            case (2,_):
-                let cell = tableView.dequeueReusableCellWithIdentifier("TemperatureCell", forIndexPath: indexPath)
-                let tool = (indexPath.row == 0) ? OPManager.sharedInstance.bed : OPManager.sharedInstance.tools[indexPath.row - 1]
-
-                cell.textLabel?.text = tool.identifier
-                cell.detailTextLabel?.text = "\(tool.actualTemperature.celciusString()) (\(tool.targetTemperature.celciusString()))"
-                return cell
         
             default:
                 let cell = tableView.dequeueReusableCellWithIdentifier("BasicCell", forIndexPath: indexPath)
@@ -116,23 +105,11 @@ class OverviewTableViewController: UITableViewController {
 	}
 
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        if indexPath.section == 2 {
-            performSegueWithIdentifier("ShowTemperatureSelector", sender: self)
-        } else {
-            tableView.deselectRowAtIndexPath(indexPath, animated: true)
-        }
+
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == "ShowTemperatureSelector" {
-            if let indexPath = tableView.indexPathForSelectedRow {
-                let temperatureSelector = segue.destinationViewController as! TemperatureSelectorTableViewController
-                
-                temperatureSelector.heatedComponent = (indexPath.row == 0) ? OPManager.sharedInstance.bed : OPManager.sharedInstance.tools[indexPath.row - 1]
-                
-            }
-            
-        }
+
     }
 	
 }
