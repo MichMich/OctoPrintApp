@@ -39,6 +39,10 @@
 		4CB711E51B640672001A01C9 /* OPTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CB711E41B640672001A01C9 /* OPTool.swift */; };
 		4CBE55601B6518990089CE7C /* IPCameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CBE555F1B6518990089CE7C /* IPCameraView.swift */; };
 		4CBE556A1B651A070089CE7C /* ControlViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CBE55691B651A070089CE7C /* ControlViewController.swift */; };
+		FD02F73C1B679CBB00E385E9 /* settings.png in Resources */ = {isa = PBXBuildFile; fileRef = FD02F7391B679CBB00E385E9 /* settings.png */; };
+		FD02F73D1B679CBB00E385E9 /* settings@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = FD02F73A1B679CBB00E385E9 /* settings@3x.png */; };
+		FD02F73E1B679CBB00E385E9 /* settings@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FD02F73B1B679CBB00E385E9 /* settings@2x.png */; };
+		FD02F7461B679E3500E385E9 /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD02F7451B679E3500E385E9 /* SettingsTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -180,6 +184,10 @@
 		4CB711E41B640672001A01C9 /* OPTool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OPTool.swift; sourceTree = "<group>"; };
 		4CBE555F1B6518990089CE7C /* IPCameraView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IPCameraView.swift; sourceTree = "<group>"; };
 		4CBE55691B651A070089CE7C /* ControlViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ControlViewController.swift; sourceTree = "<group>"; };
+		FD02F7391B679CBB00E385E9 /* settings.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = settings.png; sourceTree = "<group>"; };
+		FD02F73A1B679CBB00E385E9 /* settings@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "settings@3x.png"; sourceTree = "<group>"; };
+		FD02F73B1B679CBB00E385E9 /* settings@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "settings@2x.png"; sourceTree = "<group>"; };
+		FD02F7451B679E3500E385E9 /* SettingsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -221,6 +229,9 @@
 				4C80C2C01B66729500ADB99E /* control@3x.png */,
 				4C80C2C11B66729500ADB99E /* control@2x.png */,
 				4C80C2C21B66729500ADB99E /* control.png */,
+				FD02F7391B679CBB00E385E9 /* settings.png */,
+				FD02F73A1B679CBB00E385E9 /* settings@3x.png */,
+				FD02F73B1B679CBB00E385E9 /* settings@2x.png */,
 			);
 			name = Images;
 			sourceTree = "<group>";
@@ -261,6 +272,7 @@
 				4C80C2CC1B6672CE00ADB99E /* TemperatureTableViewController.swift */,
 				4CBE55691B651A070089CE7C /* ControlViewController.swift */,
 				4CB0CCB91B61118200673CC9 /* TemperatureSelectorTableViewController.swift */,
+				FD02F7451B679E3500E385E9 /* SettingsTableViewController.swift */,
 				4CB0CCBB1B611AFB00673CC9 /* TemperaturePickerTableViewCell.swift */,
 				4CB0CCBD1B61269900673CC9 /* Helpers.swift */,
 				4CBE555F1B6518990089CE7C /* IPCameraView.swift */,
@@ -504,8 +516,11 @@
 				4C80C2C31B66729500ADB99E /* temperature@3x.png in Resources */,
 				4C80C2D11B66768E00ADB99E /* info@3x.png in Resources */,
 				4CADF1841B5FCF0E0090AFEC /* Assets.xcassets in Resources */,
+				FD02F73D1B679CBB00E385E9 /* settings@3x.png in Resources */,
 				4C80C2C91B66729500ADB99E /* control@3x.png in Resources */,
+				FD02F73E1B679CBB00E385E9 /* settings@2x.png in Resources */,
 				4C80C2C51B66729500ADB99E /* temperature.png in Resources */,
+				FD02F73C1B679CBB00E385E9 /* settings.png in Resources */,
 				4C80C2C41B66729500ADB99E /* temperature@2x.png in Resources */,
 				4C80C2D31B66768E00ADB99E /* info.png in Resources */,
 			);
@@ -543,6 +558,7 @@
 				4CADF17D1B5FCF0E0090AFEC /* AppDelegate.swift in Sources */,
 				4CBE556A1B651A070089CE7C /* ControlViewController.swift in Sources */,
 				4CADF1BF1B5FD16C0090AFEC /* OPManager.swift in Sources */,
+				FD02F7461B679E3500E385E9 /* SettingsTableViewController.swift in Sources */,
 				4CB711DD1B63E05E001A01C9 /* OPAPITask.swift in Sources */,
 				4CB0CCBA1B61118200673CC9 /* TemperatureSelectorTableViewController.swift in Sources */,
 				4CB711E11B63E27F001A01C9 /* OPHeatedComponent.swift in Sources */,

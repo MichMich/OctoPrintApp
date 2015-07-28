@@ -12,7 +12,7 @@ import SwiftyJSON
 
 class OPAPITask: NSObject {
     
-    static let alamofireManager = Alamofire.Manager(withHeaders: ["X-Api-Key": "6F72A90FCD4C4AF6A7F7836F787681B6"])
+    var alamofireManager = Alamofire.Manager()
     
     var endPoint:String
     private var successBlock:((JSON?)->())?
@@ -27,6 +27,12 @@ class OPAPITask: NSObject {
     
     init (endPoint:String) {
         self.endPoint = endPoint
+        if (NSUserDefaults.standardUserDefaults().stringForKey("OctoPrintAPIKey") != nil) {
+            let apiKey:String = NSUserDefaults.standardUserDefaults().stringForKey("OctoPrintAPIKey")!
+            self.alamofireManager = Alamofire.Manager(withHeaders: ["X-Api-Key": apiKey])
+        }
+        super.init()
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "userDefaultsDidChange", name: NSUserDefaultsDidChangeNotification, object: nil)
     }
     
     func fire() -> OPAPITask {
@@ -68,30 +74,42 @@ class OPAPITask: NSObject {
         }
     }
     
+    @objc func userDefaultsDidChange() {
+        if (NSUserDefaults.standardUserDefaults().stringForKey("OctoPrintAPIKey") != nil) {
+            let apiKey:String = NSUserDefaults.standardUserDefaults().stringForKey("OctoPrintAPIKey")!
+            self.alamofireManager = Alamofire.Manager(withHeaders: ["X-Api-Key": apiKey])
+        }
+    }
+    
     private func executeCall() {
-        let endPoint = "http://192.168.0.30/api/\(self.endPoint)"
         
-        var message:String?
-        
-        OPAPITask.alamofireManager
-            .request(method, endPoint, parameters: parameters, encoding: .JSON)
-            .responseString { request, response, string, error in
-                message = string
-            }
-            .responseJSON {
-                (request, response, jsonData, error) -> Void in
-                if let error = error {
-                    //print(error)
-                    print(message)
-                    self.failureBlock?(error)
-                    self.scheduleTimer()
-                } else {
-                    //print(jsonData)
-                    let json = JSON(jsonData ?? [])
-                    self.lastSuccessfulRun = NSDate()
-                    self.successBlock?(json)
-                    self.scheduleTimer()
+        if (NSUserDefaults.standardUserDefaults().stringForKey("OctoPrintHost") != nil) {
+            let host = NSUserDefaults.standardUserDefaults().stringForKey("OctoPrintHost")!
+            let endPoint = "http://\(host)/api/\(self.endPoint)"
+            
+            
+            var message:String?
+            
+            self.alamofireManager
+                .request(method, endPoint, parameters: parameters, encoding: .JSON)
+                .responseString { request, response, string, error in
+                    message = string
                 }
+                .responseJSON {
+                    (request, response, jsonData, error) -> Void in
+                    if let error = error {
+                        //print(error)
+                        print(message)
+                        self.failureBlock?(error)
+                        self.scheduleTimer()
+                    } else {
+                        //print(jsonData)
+                        let json = JSON(jsonData ?? [])
+                        self.lastSuccessfulRun = NSDate()
+                        self.successBlock?(json)
+                        self.scheduleTimer()
+                    }
             }
+        }
     }
 }
