@@ -5,12 +5,14 @@
   },
   "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
     "30B86E201E281B773050607B864F414D5AAA1ED2" : 0,
+    "E6D213C34030D0C425EBA064BAA7E3D79DD70BB0" : 0,
     "C861FC00CEE0F6A6BE81FCFF6785FAA78C58EBB3" : 0,
     "67620B5EFA902936DF04070AF595B76AB0333747" : 0
   },
   "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "551160D9-5475-41C4-8927-C8B723D302F2",
   "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
     "30B86E201E281B773050607B864F414D5AAA1ED2" : "OctoPrintApp\/",
+    "E6D213C34030D0C425EBA064BAA7E3D79DD70BB0" : "OctoPrint\/QRCodeReader.swift\/",
     "C861FC00CEE0F6A6BE81FCFF6785FAA78C58EBB3" : "OctoPrintApp\/SwiftyJSON\/",
     "67620B5EFA902936DF04070AF595B76AB0333747" : "OctoPrintApp\/Alamofire\/"
   },
@@ -32,6 +34,11 @@
       "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/SwiftyJSON\/SwiftyJSON.git",
       "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
       "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "C861FC00CEE0F6A6BE81FCFF6785FAA78C58EBB3"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/yannickl\/QRCodeReader.swift",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "E6D213C34030D0C425EBA064BAA7E3D79DD70BB0"
     }
   ]
 }

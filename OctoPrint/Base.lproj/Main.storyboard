@@ -296,26 +296,17 @@
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <color key="separatorColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         <sections>
-                            <tableViewSection headerTitle="Printer Settings" id="wtR-cM-HdW">
+                            <tableViewSection headerTitle="OctoPrint Host" id="wtR-cM-HdW">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="NhX-ru-Uk8">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" id="NhX-ru-Uk8">
                                         <rect key="frame" x="0.0" y="114" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="NhX-ru-Uk8" id="UoD-mF-Uqw">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Printer Host" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wl6-qq-YQo">
-                                                    <rect key="frame" x="17" y="11" width="112" height="21"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" constant="112" id="TWt-vG-dMN"/>
-                                                    </constraints>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="192.168.1.1" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="niG-aj-kG3">
-                                                    <rect key="frame" x="143" y="6" width="449" height="31"/>
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="OctoPrint Host" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="niG-aj-kG3">
+                                                    <rect key="frame" x="15" y="6" width="577" height="31"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="URL" returnKeyType="next"/>
                                                     <connections>
@@ -324,49 +315,51 @@
                                                 </textField>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="wl6-qq-YQo" firstAttribute="top" secondItem="UoD-mF-Uqw" secondAttribute="topMargin" constant="3" id="F0O-LD-re9"/>
-                                                <constraint firstItem="wl6-qq-YQo" firstAttribute="leading" secondItem="UoD-mF-Uqw" secondAttribute="leadingMargin" constant="9" id="KNQ-a9-voU"/>
-                                                <constraint firstAttribute="bottomMargin" secondItem="wl6-qq-YQo" secondAttribute="bottom" constant="3" id="R5d-Jj-rzO"/>
-                                                <constraint firstItem="niG-aj-kG3" firstAttribute="top" secondItem="UoD-mF-Uqw" secondAttribute="top" constant="6" id="T6G-We-xsB"/>
-                                                <constraint firstAttribute="trailing" secondItem="niG-aj-kG3" secondAttribute="trailing" constant="8" id="d40-V4-T68"/>
-                                                <constraint firstItem="niG-aj-kG3" firstAttribute="leading" secondItem="wl6-qq-YQo" secondAttribute="trailing" constant="14" id="oiU-db-gmM"/>
-                                                <constraint firstAttribute="bottom" secondItem="niG-aj-kG3" secondAttribute="bottom" constant="6" id="xpW-dA-Krh"/>
+                                                <constraint firstItem="niG-aj-kG3" firstAttribute="top" secondItem="UoD-mF-Uqw" secondAttribute="topMargin" constant="-2" id="EIp-di-Tmi"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="niG-aj-kG3" secondAttribute="trailing" id="WDr-nD-X5H"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="niG-aj-kG3" secondAttribute="bottom" constant="-2" id="Zov-wr-qgX"/>
+                                                <constraint firstAttribute="leadingMargin" secondItem="niG-aj-kG3" secondAttribute="leading" constant="-7" id="xy6-hN-YhF"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="GW9-IH-Ert">
-                                        <rect key="frame" x="0.0" y="158" width="600" height="44"/>
+                                </cells>
+                            </tableViewSection>
+                            <tableViewSection headerTitle="OCTOPRINT API Settings" id="3WD-Yn-KiU">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" id="Qyn-FZ-4kO">
+                                        <rect key="frame" x="0.0" y="201" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="GW9-IH-Ert" id="dW3-ER-XYZ">
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Qyn-FZ-4kO" id="Szt-Ky-WcE">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="API Key" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QyW-Az-3Am">
-                                                    <rect key="frame" x="17" y="11" width="112" height="21"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" constant="112" id="c0g-t3-YdC"/>
-                                                    </constraints>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="1231234512" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Vsb-iW-ITw">
-                                                    <rect key="frame" x="143" y="6" width="449" height="31"/>
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="API Key" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="VeJ-ZX-nkM">
+                                                    <rect key="frame" x="15" y="0.0" width="534" height="43"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="done"/>
                                                     <connections>
-                                                        <outlet property="delegate" destination="G3a-Wd-tAA" id="eX5-s2-Bex"/>
+                                                        <outlet property="delegate" destination="G3a-Wd-tAA" id="LxV-eJ-PBB"/>
                                                     </connections>
                                                 </textField>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fp9-4g-IH9">
+                                                    <rect key="frame" x="557" y="8" width="28" height="27"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="28" id="TKe-z2-SaI"/>
+                                                        <constraint firstAttribute="height" constant="27" id="pUL-LM-SkI"/>
+                                                    </constraints>
+                                                    <state key="normal" image="camera.png"/>
+                                                    <connections>
+                                                        <action selector="scanButtonTapped:" destination="G3a-Wd-tAA" eventType="touchUpInside" id="2Jg-Lk-V7O"/>
+                                                    </connections>
+                                                </button>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="QyW-Az-3Am" firstAttribute="leading" secondItem="dW3-ER-XYZ" secondAttribute="leadingMargin" constant="9" id="78f-t1-Nwo"/>
-                                                <constraint firstAttribute="trailing" secondItem="Vsb-iW-ITw" secondAttribute="trailing" constant="8" id="XAn-sm-slE"/>
-                                                <constraint firstItem="QyW-Az-3Am" firstAttribute="top" secondItem="dW3-ER-XYZ" secondAttribute="topMargin" constant="3" id="ci9-CK-7NG"/>
-                                                <constraint firstItem="Vsb-iW-ITw" firstAttribute="top" secondItem="dW3-ER-XYZ" secondAttribute="top" constant="6" id="jDj-RF-tOI"/>
-                                                <constraint firstAttribute="bottomMargin" secondItem="QyW-Az-3Am" secondAttribute="bottom" constant="3" id="rL4-hu-72e"/>
-                                                <constraint firstItem="Vsb-iW-ITw" firstAttribute="leading" secondItem="QyW-Az-3Am" secondAttribute="trailing" constant="14" id="sxe-Cw-Kbb"/>
-                                                <constraint firstAttribute="bottom" secondItem="Vsb-iW-ITw" secondAttribute="bottom" constant="6" id="xuG-ga-HNe"/>
+                                                <constraint firstAttribute="bottom" secondItem="VeJ-ZX-nkM" secondAttribute="bottom" id="3ji-A2-3ad"/>
+                                                <constraint firstItem="fp9-4g-IH9" firstAttribute="leading" secondItem="VeJ-ZX-nkM" secondAttribute="trailing" constant="8" id="894-7o-ggX"/>
+                                                <constraint firstAttribute="leadingMargin" secondItem="VeJ-ZX-nkM" secondAttribute="leading" constant="-7" id="Es0-Ua-Ili"/>
+                                                <constraint firstItem="VeJ-ZX-nkM" firstAttribute="top" secondItem="Szt-Ky-WcE" secondAttribute="top" id="Nps-uy-QuB"/>
+                                                <constraint firstItem="fp9-4g-IH9" firstAttribute="centerY" secondItem="Szt-Ky-WcE" secondAttribute="centerY" id="TCF-65-y5m"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="fp9-4g-IH9" secondAttribute="trailing" constant="7" id="asu-n2-4JU"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -378,9 +371,9 @@
                             <outlet property="delegate" destination="G3a-Wd-tAA" id="oWv-Dk-hfb"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Root View Controller" id="55j-EA-0hE"/>
+                    <navigationItem key="navigationItem" title="Settings" id="55j-EA-0hE"/>
                     <connections>
-                        <outlet property="apiKeyTextField" destination="Vsb-iW-ITw" id="BFZ-pY-fng"/>
+                        <outlet property="apiKeyTextField" destination="VeJ-ZX-nkM" id="8NI-Hr-OVg"/>
                         <outlet property="hostTextField" destination="niG-aj-kG3" id="Ukr-RU-mG1"/>
                     </connections>
                 </tableViewController>
@@ -407,6 +400,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="camera.png" width="28" height="22"/>
         <image name="control.png" width="20" height="19"/>
         <image name="info.png" width="22" height="22"/>
         <image name="settings.png" width="16" height="16"/>

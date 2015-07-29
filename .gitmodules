@@ -5,3 +5,7 @@
 	path = SwiftyJSON
 	url = https://github.com/SwiftyJSON/SwiftyJSON.git
 	branch = xcode7
+[submodule "QRCodeReader.swift"]
+	path = QRCodeReader.swift
+	url = https://github.com/yannickl/QRCodeReader.swift
+	branch = swift2

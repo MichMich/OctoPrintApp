@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4C3855C51B69494700C508D6 /* camera@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C3855C21B69494700C508D6 /* camera@3x.png */; };
+		4C3855C61B69494700C508D6 /* camera@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C3855C31B69494700C508D6 /* camera@2x.png */; };
+		4C3855C71B69494700C508D6 /* camera.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C3855C41B69494700C508D6 /* camera.png */; };
+		4C3855E41B694DF300C508D6 /* QRCodeReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C3855E01B694DF300C508D6 /* QRCodeReader.swift */; };
+		4C3855E51B694DF300C508D6 /* QRCodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C3855E11B694DF300C508D6 /* QRCodeViewController.swift */; };
+		4C3855E61B694DF300C508D6 /* ReaderOverlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C3855E21B694DF300C508D6 /* ReaderOverlayView.swift */; };
+		4C3855E71B694DF300C508D6 /* SwitchCameraButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C3855E31B694DF300C508D6 /* SwitchCameraButton.swift */; };
 		4C80C2C31B66729500ADB99E /* temperature@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C80C2BA1B66729500ADB99E /* temperature@3x.png */; };
 		4C80C2C41B66729500ADB99E /* temperature@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C80C2BB1B66729500ADB99E /* temperature@2x.png */; };
 		4C80C2C51B66729500ADB99E /* temperature.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C80C2BC1B66729500ADB99E /* temperature.png */; };
@@ -148,6 +155,13 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		4C3855C21B69494700C508D6 /* camera@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "camera@3x.png"; path = "images/camera@3x.png"; sourceTree = "<group>"; };
+		4C3855C31B69494700C508D6 /* camera@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "camera@2x.png"; path = "images/camera@2x.png"; sourceTree = "<group>"; };
+		4C3855C41B69494700C508D6 /* camera.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = camera.png; path = images/camera.png; sourceTree = "<group>"; };
+		4C3855E01B694DF300C508D6 /* QRCodeReader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QRCodeReader.swift; sourceTree = "<group>"; };
+		4C3855E11B694DF300C508D6 /* QRCodeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QRCodeViewController.swift; sourceTree = "<group>"; };
+		4C3855E21B694DF300C508D6 /* ReaderOverlayView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReaderOverlayView.swift; sourceTree = "<group>"; };
+		4C3855E31B694DF300C508D6 /* SwitchCameraButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwitchCameraButton.swift; sourceTree = "<group>"; };
 		4C80C2BA1B66729500ADB99E /* temperature@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "temperature@3x.png"; path = "images/temperature@3x.png"; sourceTree = "<group>"; };
 		4C80C2BB1B66729500ADB99E /* temperature@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "temperature@2x.png"; path = "images/temperature@2x.png"; sourceTree = "<group>"; };
 		4C80C2BC1B66729500ADB99E /* temperature.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = temperature.png; path = images/temperature.png; sourceTree = "<group>"; };
@@ -184,9 +198,9 @@
 		4CB711E41B640672001A01C9 /* OPTool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OPTool.swift; sourceTree = "<group>"; };
 		4CBE555F1B6518990089CE7C /* IPCameraView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IPCameraView.swift; sourceTree = "<group>"; };
 		4CBE55691B651A070089CE7C /* ControlViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ControlViewController.swift; sourceTree = "<group>"; };
-		FD02F7391B679CBB00E385E9 /* settings.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = settings.png; sourceTree = "<group>"; };
-		FD02F73A1B679CBB00E385E9 /* settings@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "settings@3x.png"; sourceTree = "<group>"; };
-		FD02F73B1B679CBB00E385E9 /* settings@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "settings@2x.png"; sourceTree = "<group>"; };
+		FD02F7391B679CBB00E385E9 /* settings.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = settings.png; path = images/settings.png; sourceTree = "<group>"; };
+		FD02F73A1B679CBB00E385E9 /* settings@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "settings@3x.png"; path = "images/settings@3x.png"; sourceTree = "<group>"; };
+		FD02F73B1B679CBB00E385E9 /* settings@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "settings@2x.png"; path = "images/settings@2x.png"; sourceTree = "<group>"; };
 		FD02F7451B679E3500E385E9 /* SettingsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -217,9 +231,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4C3855DF1B694DF300C508D6 /* QRCodeReader */ = {
+			isa = PBXGroup;
+			children = (
+				4C3855E01B694DF300C508D6 /* QRCodeReader.swift */,
+				4C3855E11B694DF300C508D6 /* QRCodeViewController.swift */,
+				4C3855E21B694DF300C508D6 /* ReaderOverlayView.swift */,
+				4C3855E31B694DF300C508D6 /* SwitchCameraButton.swift */,
+			);
+			name = QRCodeReader;
+			path = QRCodeReader.swift/QRCodeReader;
+			sourceTree = SOURCE_ROOT;
+		};
 		4C80C2B31B66728400ADB99E /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				4C3855C21B69494700C508D6 /* camera@3x.png */,
+				4C3855C31B69494700C508D6 /* camera@2x.png */,
+				4C3855C41B69494700C508D6 /* camera.png */,
 				4C80C2CE1B66768E00ADB99E /* info@3x.png */,
 				4C80C2CF1B66768E00ADB99E /* info@2x.png */,
 				4C80C2D01B66768E00ADB99E /* info.png */,
@@ -261,6 +290,7 @@
 		4CADF17B1B5FCF0E0090AFEC /* OctoPrint */ = {
 			isa = PBXGroup;
 			children = (
+				4C3855DF1B694DF300C508D6 /* QRCodeReader */,
 				4C80C2B31B66728400ADB99E /* Images */,
 				4CADF17C1B5FCF0E0090AFEC /* AppDelegate.swift */,
 				4CB0CCB61B610C1200673CC9 /* Main.storyboard */,
@@ -512,9 +542,12 @@
 				4CADF1871B5FCF0E0090AFEC /* LaunchScreen.storyboard in Resources */,
 				4C80C2D21B66768E00ADB99E /* info@2x.png in Resources */,
 				4C80C2CB1B66729500ADB99E /* control.png in Resources */,
+				4C3855C71B69494700C508D6 /* camera.png in Resources */,
+				4C3855C51B69494700C508D6 /* camera@3x.png in Resources */,
 				4C80C2CA1B66729500ADB99E /* control@2x.png in Resources */,
 				4C80C2C31B66729500ADB99E /* temperature@3x.png in Resources */,
 				4C80C2D11B66768E00ADB99E /* info@3x.png in Resources */,
+				4C3855C61B69494700C508D6 /* camera@2x.png in Resources */,
 				4CADF1841B5FCF0E0090AFEC /* Assets.xcassets in Resources */,
 				FD02F73D1B679CBB00E385E9 /* settings@3x.png in Resources */,
 				4C80C2C91B66729500ADB99E /* control@3x.png in Resources */,
@@ -547,20 +580,24 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4C3855E61B694DF300C508D6 /* ReaderOverlayView.swift in Sources */,
 				4CB711E51B640672001A01C9 /* OPTool.swift in Sources */,
 				4CADF17F1B5FCF0E0090AFEC /* OverviewTableViewController.swift in Sources */,
 				4C80C2CD1B6672CE00ADB99E /* TemperatureTableViewController.swift in Sources */,
+				4C3855E51B694DF300C508D6 /* QRCodeViewController.swift in Sources */,
 				4CBE55601B6518990089CE7C /* IPCameraView.swift in Sources */,
 				4CB711DF1B63E21A001A01C9 /* OPComponent.swift in Sources */,
 				4CB0CCBE1B61269900673CC9 /* Helpers.swift in Sources */,
 				4CB0CCBC1B611AFB00673CC9 /* TemperaturePickerTableViewCell.swift in Sources */,
 				4CB711E31B63E425001A01C9 /* OPBed.swift in Sources */,
+				4C3855E71B694DF300C508D6 /* SwitchCameraButton.swift in Sources */,
 				4CADF17D1B5FCF0E0090AFEC /* AppDelegate.swift in Sources */,
 				4CBE556A1B651A070089CE7C /* ControlViewController.swift in Sources */,
 				4CADF1BF1B5FD16C0090AFEC /* OPManager.swift in Sources */,
 				FD02F7461B679E3500E385E9 /* SettingsTableViewController.swift in Sources */,
 				4CB711DD1B63E05E001A01C9 /* OPAPITask.swift in Sources */,
 				4CB0CCBA1B61118200673CC9 /* TemperatureSelectorTableViewController.swift in Sources */,
+				4C3855E41B694DF300C508D6 /* QRCodeReader.swift in Sources */,
 				4CB711E11B63E27F001A01C9 /* OPHeatedComponent.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
