@@ -28,8 +28,14 @@ class ControlViewController: UIViewController {
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "startStream", key: .DidUpdateSettings, object: OPManager.sharedInstance)
         
-
+    }
+    
+    override func viewDidAppear(animated: Bool) {
         startStream()
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
+        ipView.stop()
     }
     
     func startStream() {

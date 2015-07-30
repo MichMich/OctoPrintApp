@@ -13,53 +13,26 @@ class IPCameraView: UIImageView, NSURLSessionDataDelegate {
     
 
     
-    var url: NSURL
-    var endMarkerData: NSData
-    var receivedData: NSMutableData
-    var dataTask: NSURLSessionDataTask
-    
-    override init(frame: CGRect) {
-        self.endMarkerData = NSData(bytes: [0xFF, 0xD9] as [UInt8], length: 2)
-        
-        self.url = NSURL()
-        self.receivedData = NSMutableData()
-        
- 
-        
-        self.dataTask = NSURLSessionDataTask()
-
-        super.init(frame: frame)
-        
-
-    }
-
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
+    var url = NSURL()
+    var endMarkerData = NSData(bytes: [0xFF, 0xD9] as [UInt8], length: 2)
+    var receivedData =  NSMutableData()
+    var dataTask: NSURLSessionDataTask?
     
     deinit{
-        self.dataTask.cancel()
+        self.dataTask?.cancel()
+        self.dataTask = nil
     }
     
     func startWithURL(url:NSURL){
         let session = NSURLSession(configuration: NSURLSessionConfiguration.defaultSessionConfiguration(), delegate: self, delegateQueue: nil)
-        
-        
         let request = NSURLRequest(URL: url )
         
+        self.dataTask?.cancel()
         self.dataTask = session.dataTaskWithRequest(request)
-        
-        
-        
-        
         // Initialization code
         
-        self.dataTask.resume()
-
+        self.dataTask?.resume()
         self.contentMode = UIViewContentMode.ScaleAspectFit
-        
-
-
     }
     
     override func layoutSubviews() {
@@ -67,7 +40,8 @@ class IPCameraView: UIImageView, NSURLSessionDataDelegate {
     }
     
     func pause() {
-        self.dataTask.cancel()
+        self.dataTask?.cancel()
+        self.dataTask = nil
     }
     
     func stop(){
