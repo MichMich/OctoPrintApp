@@ -10,23 +10,35 @@ import UIKit
 
 class ControlViewController: UIViewController {
 
-    //let ipView = IPCameraView()
+    let ipView = IPCameraView(frame: CGRectZero)
     
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Control"
         
         
-//        view.addSubview(ipView)
-//        ipView.translatesAutoresizingMaskIntoConstraints = false
-//        view.addConstraint(NSLayoutConstraint(item: ipView, attribute: .Width, relatedBy: .Equal, toItem: view, attribute: .Width, multiplier: 1, constant: 0))
-//        view.addConstraint(NSLayoutConstraint(item: ipView, attribute: .Height, relatedBy: .Equal, toItem: view, attribute: .Height, multiplier: 1, constant: 0))
-//        view.addConstraint(NSLayoutConstraint(item: ipView, attribute: .CenterX, relatedBy: .Equal, toItem: view, attribute: .CenterX, multiplier: 1, constant: 0))
-//        view.addConstraint(NSLayoutConstraint(item: ipView, attribute: .CenterY, relatedBy: .Equal, toItem: view, attribute: .CenterY, multiplier: 1, constant: 0))
-//        
-//        ipView.backgroundColor = UIColor.redColor()
-//        ipView.startWithURL(NSURL(string: "http://192.168.0.30:8080/?action=stream")!)
-        // Do any additional setup after loading the view.
+        view.addSubview(ipView)
+        ipView.translatesAutoresizingMaskIntoConstraints = false
+        view.addConstraint(NSLayoutConstraint(item: ipView, attribute: .Width, relatedBy: .Equal, toItem: view, attribute: .Width, multiplier: 1, constant: 0))
+        view.addConstraint(NSLayoutConstraint(item: ipView, attribute: .Height, relatedBy: .Equal, toItem: view, attribute: .Width, multiplier: 3/4, constant: 0))
+        view.addConstraint(NSLayoutConstraint(item: ipView, attribute: .CenterX, relatedBy: .Equal, toItem: view, attribute: .CenterX, multiplier: 1, constant: 0))
+        view.addConstraint(NSLayoutConstraint(item: ipView, attribute: .Top, relatedBy: .Equal, toItem: view, attribute: .Top, multiplier: 1, constant: 64))
+        
+        ipView.backgroundColor = UIColor.blackColor()
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "startStream", key: .DidUpdateSettings, object: OPManager.sharedInstance)
+        
+
+        startStream()
+    }
+    
+    func startStream() {
+        if let webcamStreamUrl = OPManager.sharedInstance.webcamStreamURL {
+            ipView.hidden = false
+            ipView.startWithURL(webcamStreamUrl)
+        } else {
+            ipView.hidden = true
+        }
     }
 
     override func didReceiveMemoryWarning() {

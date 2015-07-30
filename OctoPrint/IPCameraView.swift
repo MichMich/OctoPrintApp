@@ -9,9 +9,9 @@
 import UIKit
 
 
-class IPCameraView: UIView, NSURLSessionDataDelegate {
+class IPCameraView: UIImageView, NSURLSessionDataDelegate {
     
-    var imageView:UIImageView
+
     
     var url: NSURL
     var endMarkerData: NSData
@@ -24,13 +24,13 @@ class IPCameraView: UIView, NSURLSessionDataDelegate {
         self.url = NSURL()
         self.receivedData = NSMutableData()
         
-        self.imageView = UIImageView()
+ 
         
         self.dataTask = NSURLSessionDataTask()
 
         super.init(frame: frame)
         
-        self.addSubview(self.imageView)
+
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -50,13 +50,16 @@ class IPCameraView: UIView, NSURLSessionDataDelegate {
         self.dataTask = session.dataTaskWithRequest(request)
         
         
+        
+        
         // Initialization code
         
         self.dataTask.resume()
+
+        self.contentMode = UIViewContentMode.ScaleAspectFit
         
-        let bounds = self.bounds
-        self.imageView.frame = bounds
-        self.imageView.contentMode = UIViewContentMode.ScaleAspectFit
+
+
     }
     
     override func layoutSubviews() {
@@ -75,30 +78,32 @@ class IPCameraView: UIView, NSURLSessionDataDelegate {
         dataTask: NSURLSessionDataTask,
         didReceiveData: NSData) {
             
+
             
             self.receivedData.appendData(didReceiveData)
             
-            //NSLog( "Did receive data" )
             
             
-            let endRange:NSRange = self.receivedData.rangeOfData(self.endMarkerData, options: NSDataSearchOptions.Backwards, range: NSMakeRange(0, self.receivedData.length))
+            let endRange:NSRange = self.receivedData.rangeOfData(self.endMarkerData, options: NSDataSearchOptions(rawValue: 0), range: NSMakeRange(0, self.receivedData.length))
 
-         
-            
-            
             let endLocation = endRange.location + endRange.length
-            //long long endLocation = endRange.location + endRange.length;
             
-           
+            
+            
+            
             
             if self.receivedData.length >= endLocation {
+            
+
+                
                 let imageData = self.receivedData.subdataWithRange(NSMakeRange(0, endLocation))
                 let receivedImage = UIImage(data: imageData)
 
                 dispatch_async( dispatch_get_main_queue(), {
-                    self.imageView.image = receivedImage
+                    self.image = receivedImage
                 })
                 
+           
                 
                 self.receivedData = NSMutableData(data: self.receivedData.subdataWithRange(NSMakeRange(endLocation, self.receivedData.length - endLocation)))
                 

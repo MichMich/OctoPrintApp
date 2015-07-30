@@ -207,19 +207,7 @@
                     <view key="view" contentMode="scaleToFill" id="bbV-hn-LjI">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Work in progress! :)" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oiX-2k-FOo">
-                                <rect key="frame" x="226" y="289" width="149" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="oiX-2k-FOo" firstAttribute="centerY" secondItem="bbV-hn-LjI" secondAttribute="centerY" id="fes-GF-u72"/>
-                            <constraint firstItem="oiX-2k-FOo" firstAttribute="centerX" secondItem="bbV-hn-LjI" secondAttribute="centerX" id="pH4-1Q-707"/>
-                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="sqH-d0-lnZ"/>
                 </viewController>

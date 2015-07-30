@@ -20,6 +20,7 @@ class TemperatureTableViewController: UITableViewController {
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "updateUI", key: .DidUpdatePrinter, object: OPManager.sharedInstance)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "updateUI", key: .DidUpdateVersion, object: OPManager.sharedInstance)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "updateUI", key: .DidUpdateSettings, object: OPManager.sharedInstance)
         
         OPManager.sharedInstance.updateVersion()
         OPManager.sharedInstance.updatePrinter(autoUpdate:1)

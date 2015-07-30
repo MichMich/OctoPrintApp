@@ -77,6 +77,7 @@ class OPManager {
 
     // settings
     var temperaturePresets:[OPTemperaturePreset] = []
+    var webcamStreamURL: NSURL?
     
     private enum tasks {
         static var updateVersion = OPAPITask(endPoint: "version")
@@ -160,6 +161,10 @@ class OPManager {
                     
                     OPManager.notificationCenter.postNotificationKey(OPNotification.DidUpdateSettings, object: self)
                 }
+                
+                let host = NSUserDefaults.standardUserDefaults().stringForKey("OctoPrintHost")!
+                let streamPath = json["webcam"]["streamUrl"].stringValue
+                self.webcamStreamURL = NSURL(string: "http://\(host)\(streamPath)") 
             }
             
         }).autoRepeat(interval).fire()
