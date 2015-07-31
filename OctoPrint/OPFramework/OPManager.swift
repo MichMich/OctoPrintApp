@@ -72,6 +72,7 @@ class OPManager {
     var printerStateText:String = "Unknown"
     var printerStateFlags:OPStateFlags = OPStateFlags(operational: false, paused: false, printing: false, sdReady: false, error: false, ready: false, closedOrError: false)
 
+    let printHead = OPPrintHead(identifier: "PrintHead")
     let bed:OPBed = OPBed(identifier: "bed")
     let tools = OPToolArray()
 

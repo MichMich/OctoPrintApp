@@ -10,7 +10,7 @@ import Foundation
 
 
 enum OPComponentType {
-    case PrinterHead
+    case PrintHead
     case Tool
     case Bed
     case SDCard

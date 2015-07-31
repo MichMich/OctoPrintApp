@@ -24,6 +24,8 @@
 		4C80C2D11B66768E00ADB99E /* info@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C80C2CE1B66768E00ADB99E /* info@3x.png */; };
 		4C80C2D21B66768E00ADB99E /* info@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C80C2CF1B66768E00ADB99E /* info@2x.png */; };
 		4C80C2D31B66768E00ADB99E /* info.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C80C2D01B66768E00ADB99E /* info.png */; };
+		4C9806541B6BD02000B301C4 /* DirectionControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C9806531B6BD02000B301C4 /* DirectionControl.swift */; };
+		4C98065C1B6BD32E00B301C4 /* OPPrintHead.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C98065B1B6BD32E00B301C4 /* OPPrintHead.swift */; };
 		4CADF17D1B5FCF0E0090AFEC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CADF17C1B5FCF0E0090AFEC /* AppDelegate.swift */; };
 		4CADF17F1B5FCF0E0090AFEC /* OverviewTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CADF17E1B5FCF0E0090AFEC /* OverviewTableViewController.swift */; };
 		4CADF1841B5FCF0E0090AFEC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4CADF1831B5FCF0E0090AFEC /* Assets.xcassets */; };
@@ -172,6 +174,8 @@
 		4C80C2CE1B66768E00ADB99E /* info@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "info@3x.png"; path = "images/info@3x.png"; sourceTree = "<group>"; };
 		4C80C2CF1B66768E00ADB99E /* info@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "info@2x.png"; path = "images/info@2x.png"; sourceTree = "<group>"; };
 		4C80C2D01B66768E00ADB99E /* info.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = info.png; path = images/info.png; sourceTree = "<group>"; };
+		4C9806531B6BD02000B301C4 /* DirectionControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DirectionControl.swift; sourceTree = "<group>"; };
+		4C98065B1B6BD32E00B301C4 /* OPPrintHead.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OPPrintHead.swift; sourceTree = "<group>"; };
 		4CADF1791B5FCF0E0090AFEC /* OctoPrint.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OctoPrint.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4CADF17C1B5FCF0E0090AFEC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4CADF17E1B5FCF0E0090AFEC /* OverviewTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverviewTableViewController.swift; sourceTree = "<group>"; };
@@ -306,6 +310,7 @@
 				4CB0CCBB1B611AFB00673CC9 /* TemperaturePickerTableViewCell.swift */,
 				4CB0CCBD1B61269900673CC9 /* Helpers.swift */,
 				4CBE555F1B6518990089CE7C /* IPCameraView.swift */,
+				4C9806531B6BD02000B301C4 /* DirectionControl.swift */,
 			);
 			path = OctoPrint;
 			sourceTree = "<group>";
@@ -357,6 +362,7 @@
 				4CB711DC1B63E05E001A01C9 /* OPAPITask.swift */,
 				4CB711DE1B63E21A001A01C9 /* OPComponent.swift */,
 				4CB711E01B63E27F001A01C9 /* OPHeatedComponent.swift */,
+				4C98065B1B6BD32E00B301C4 /* OPPrintHead.swift */,
 				4CB711E21B63E425001A01C9 /* OPBed.swift */,
 				4CB711E41B640672001A01C9 /* OPTool.swift */,
 			);
@@ -595,10 +601,12 @@
 				4CBE556A1B651A070089CE7C /* ControlViewController.swift in Sources */,
 				4CADF1BF1B5FD16C0090AFEC /* OPManager.swift in Sources */,
 				FD02F7461B679E3500E385E9 /* SettingsTableViewController.swift in Sources */,
+				4C98065C1B6BD32E00B301C4 /* OPPrintHead.swift in Sources */,
 				4CB711DD1B63E05E001A01C9 /* OPAPITask.swift in Sources */,
 				4CB0CCBA1B61118200673CC9 /* TemperatureSelectorTableViewController.swift in Sources */,
 				4C3855E41B694DF300C508D6 /* QRCodeReader.swift in Sources */,
 				4CB711E11B63E27F001A01C9 /* OPHeatedComponent.swift in Sources */,
+				4C9806541B6BD02000B301C4 /* DirectionControl.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
